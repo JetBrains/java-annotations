@@ -1,0 +1,76 @@
+plugins {
+    id "com.jfrog.bintray" version "1.7.3"
+}
+
+ext.projectVersion = projectVersion
+if (!hasProperty("bintrayUser")) {
+    ext.projectVersion = ext.projectVersion + '-SNAPSHOT'
+}
+
+allprojects {
+    group 'org.jetbrains'
+    version rootProject.ext.projectVersion
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+project(':java5').archivesBaseName = 'annotations-java5'
+project(':java8').archivesBaseName = 'annotations'
+
+configure([project(':java5'), project(':java8')]) {
+    dependencies {
+        compile project(':common')
+    }
+
+    task mainJar(type: Jar) {
+        from sourceSets.main.output
+        from project(':common').sourceSets.main.output
+    }
+
+    task sourceJar(type: Jar) {
+        from sourceSets.main.java
+        from project(':common').sourceSets.main.java
+        baseName = archivesBaseName + '-sources'
+    }
+
+    artifacts {
+        archives mainJar, sourceJar
+    }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                artifactId archivesBaseName
+                artifact mainJar
+                artifact sourceJar {
+                    classifier "sources"
+                }
+            }
+        }
+    }
+    if (hasProperty("bintrayUser")) {
+        bintray {
+            user = bintrayUser
+            key = bintrayApiKey
+            publish = true
+            publications = ['mavenJava']
+            pkg {
+                userOrg = 'jetbrains'
+                repo = "intellij-redist"
+                name = "java-annotations"
+                version {
+                    name = rootProject.ext.projectVersion
+                }
+            }
+        }
+    }
+
+}
+
