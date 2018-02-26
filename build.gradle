@@ -3,7 +3,7 @@ plugins {
 }
 
 ext.projectVersion = projectVersion
-if (!hasProperty("bintrayUser")) {
+if (System.getenv('BINTRAY_USER') == null) {
     ext.projectVersion = ext.projectVersion + '-SNAPSHOT'
 }
 
@@ -57,8 +57,8 @@ configure([project(':java5'), project(':java8')]) {
     }
     if (hasProperty("bintrayUser")) {
         bintray {
-            user = bintrayUser
-            key = bintrayApiKey
+            user = System.getenv('BINTRAY_USER')
+            key = System.getenv('BINTRAY_KEY')
             publish = true
             publications = ['mavenJava']
             pkg {
