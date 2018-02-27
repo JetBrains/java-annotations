@@ -61,7 +61,7 @@ configure([project(':java5'), project(':java8')]) {
             }
         }
     }
-    if (hasProperty("bintrayUser")) {
+    if (System.getenv('BINTRAY_USER') != null) {
         bintray {
             user = System.getenv('BINTRAY_USER')
             key = System.getenv('BINTRAY_KEY')
