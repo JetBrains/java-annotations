@@ -1,5 +1,10 @@
-plugins {
-    id "com.jfrog.bintray" version "1.7.3"
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+    }
 }
 
 ext.projectVersion = projectVersion
@@ -15,6 +20,7 @@ allprojects {
 subprojects {
     apply plugin: 'java'
     apply plugin: 'maven-publish'
+    apply plugin: 'com.jfrog.bintray'
 
     repositories {
         mavenCentral()
