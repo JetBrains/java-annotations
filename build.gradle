@@ -69,8 +69,8 @@ configure([project(':java5'), project(':java8')]) {
             publications = ['mavenJava']
             pkg {
                 userOrg = 'jetbrains'
-                repo = "intellij-redist"
-                name = "java-annotations"
+                repo = 'intellij-redist'
+                name = 'org.jetbrains:' + archivesBaseName
                 version {
                     name = rootProject.ext.projectVersion
                 }
