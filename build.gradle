@@ -69,6 +69,35 @@ configure([project(':java5'), project(':java8')]) {
                 artifact javadocJar {
                     classifier 'javadoc'
                 }
+                pom.withXml {
+                    asNode().children().last() + {
+                        resolveStrategy = DELEGATE_FIRST
+                        name 'JetBrains Java Annotations'
+                        description 'A set of annotations used for code inspection support and code documentation.'
+                        url 'https://github.com/JetBrains/java-annotations'
+                        scm {
+                            url 'https://github.com/JetBrains/java-annotations'
+                            connection 'scm:git:git://github.com/JetBrains/java-annotations.git'
+                            developerConnection 'scm:git:ssh://github.com:JetBrains/java-annotations.git'
+                        }
+                        licenses {
+                            license {
+                                name 'The Apache Software License, Version 2.0'
+                                url 'http://www.apache.org/license/LICENSE-2.0.txt'
+                                distribution 'repo'
+                            }
+                        }
+                        developers {
+                            developer {
+                                id 'JetBrains'
+                                name 'JetBrains Team'
+                                organization 'JetBrains'
+                                organizationUrl 'https://www.jetbrains.com'
+                            }
+                        }
+                    }
+                }
+
             }
         }
     }
