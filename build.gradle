@@ -46,6 +46,14 @@ configure([project(':java5'), project(':java8')]) {
         baseName = archivesBaseName + '-sources'
     }
 
+    javadoc {
+        source = [sourceSets.main.java, project(':common').sourceSets.main.java]
+    }
+
+    task javadocJar(type: Jar) {
+        from javadoc
+    }
+
     artifacts {
         archives mainJar, sourceJar
     }
@@ -57,6 +65,9 @@ configure([project(':java5'), project(':java8')]) {
                 artifact mainJar
                 artifact sourceJar {
                     classifier "sources"
+                }
+                artifact javadocJar {
+                    classifier 'javadoc'
                 }
             }
         }
