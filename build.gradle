@@ -64,7 +64,7 @@ configure([project(':java5'), project(':java8')]) {
                 artifactId archivesBaseName
                 artifact mainJar
                 artifact sourceJar {
-                    classifier "sources"
+                    classifier 'sources'
                 }
                 artifact javadocJar {
                     classifier 'javadoc'
