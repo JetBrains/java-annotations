@@ -3,7 +3,7 @@ A set of Java annotations which can be used in JVM-based languages. They serve a
 interpreted by IDEs and static analysis tools to improve code analysis.
 
 ## Using the annotations
-The annotations are published on [Bintray](https://bintray.com/jetbrains/intellij-redist/java-annotations). To add a dependency
+The annotations are published on [Maven Central](http://repo1.maven.org/maven2/org/jetbrains/annotations/) and [JCenter](https://jcenter.bintray.com/org/jetbrains/annotations/). To add a dependency
 using gradle write the following in `build.gradle` file:
 ```
 dependencies {
