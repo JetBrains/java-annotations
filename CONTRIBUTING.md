@@ -7,7 +7,9 @@ Update `projectVersion` property in gradle.properties file before doing the chan
 * increase the patch component of the version if you're changing a javadoc
 * increase the minor component of the version if you're adding a new element into an existing annotation or add 
 a new annotation highly related to an existing one
-* increase the major component of the version if you're adding a completely new annotation. 
+* increase the major component of the version if you're adding a completely new annotation.
+
+Also update version number in the examples in README.md file.  
 
 ### Backward compatibility
 All the changes should be backward compatible i.e. you can add new annotations and new elements into existing annotation. 
