@@ -18,11 +18,11 @@ package org.intellij.lang.annotations;
 import java.lang.annotation.*;
 
 /**
- * <p>This annotation intended to help IDEA to detect and auto-complete int and String constants used as an enumeration.
+ * <p>This annotation intended to help IntelliJ IDEA and other IDEs to detect and auto-complete int and String constants used as an enumeration.
  * For example, in the {@link java.awt.Label#Label(String, int)} constructor the <tt><b>alignment</b></tt> parameter can be one of the following
  * int constants: {@link java.awt.Label#LEFT}, {@link java.awt.Label#CENTER} or {@link java.awt.Label#RIGHT}
  *
- * <p>So, if <tt>@MagicConstant</tt> annotation applied to this constructor, IDEA will check the constructor usages for the allowed values.
+ * <p>So, if <tt>@MagicConstant</tt> annotation applied to this constructor, the IDE will check the constructor usages for the allowed values.
  * <p>E.g.<br>
  *  <pre>{@code
  * new Label("text", 0); // 0 is not allowed
@@ -38,7 +38,7 @@ import java.lang.annotation.*;
  * <pre>{@code @MagicConstant(intValues = {TOP, CENTER, BOTTOM})
  * int textPosition;
  * }</pre>
- * IDEA will check expressions assigned to the variable for allowed values:
+ * The IDE will check expressions assigned to the variable for allowed values:
  * <pre>{@code
  *  textPosition = 0; // not allowed
  *  textPosition = TOP; // OK
@@ -51,7 +51,7 @@ import java.lang.annotation.*;
  *  public native int getModifiers();
  * }</pre>
  *
- * IDEA will analyse getModifiers() method calls and check if its return value is used with allowed values:<br>
+ * The IDE will analyse getModifiers() method calls and check if its return value is used with allowed values:<br>
  * <pre>{@code
  *  if (aClass.getModifiers() == 3) // not allowed
  *  if (aClass.getModifiers() == Modifier.PUBLIC) // OK
@@ -65,7 +65,7 @@ import java.lang.annotation.*;
  * <pre>{@code @MagicConstant(flags = {Font.PLAIN, Font.BOLD, Font.ITALIC}) }</pre>
  * <pre>{@code @interface FontStyle {} }</pre>
  *
- * IDEA will check constructs annotated with @FontStyle for allowed values:<br>
+ * The IDE will check constructs annotated with @FontStyle for allowed values:<br>
  * <tt>@FontStyle int myStyle = 3; // not allowed<br></tt>
  * <tt>@FontStyle int myStyle = Font.BOLD | Font.ITALIC; // OK</tt><br>
  *

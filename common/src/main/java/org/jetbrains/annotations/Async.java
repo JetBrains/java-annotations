@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 /**
  * Helper annotations for asynchronous computation.
- * Used for example in IDEA debugger for async stacktraces feature.
+ * Used for example in IntelliJ IDEA's debugger for async stacktraces feature.
  *
  * @author egor
  */
