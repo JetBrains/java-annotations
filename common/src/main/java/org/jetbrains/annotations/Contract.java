@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2018 JetBrains s.r.o.
+ * Copyright 2000-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,9 +43,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * The additional return values denote the following:<br>
  * <ul>
  * <li> fail - the method throws an exception, if the arguments satisfy argument constraints
- * <li> new - (supported since IDEA 2018.2) the method returns a non-null new object which is distinct from any other object existing in the heap prior to method execution. If method is also pure, then we can be sure that the new object is not stored to any field/array and will be lost if method return value is not used.
- * <li> this - (supported since IDEA 2018.2) the method returns its qualifier value (not applicable for static methods)
- * <li> param1, param2, ... - (supported since IDEA 2018.2) the method returns its first (second, ...) parameter value
+ * <li> new - (supported in IntelliJ IDEA since version 2018.2) the method returns a non-null new object which is distinct from any other object existing in the heap prior to method execution. If method is also pure, then we can be sure that the new object is not stored to any field/array and will be lost if method return value is not used.
+ * <li> this - (supported in IntelliJ IDEA since version 2018.2) the method returns its qualifier value (not applicable for static methods)
+ * <li> param1, param2, ... - (supported in IntelliJ IDEA since version 2018.2) the method returns its first (second, ...) parameter value
  * </ul>
  * Examples:<p>
  * {@code @Contract("_, null -> null")} - the method returns null if its second argument is null<br>
