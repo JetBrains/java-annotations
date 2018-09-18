@@ -11,6 +11,7 @@ ext.projectVersion = projectVersion
 if (System.getenv('BINTRAY_USER') == null) {
     ext.projectVersion = ext.projectVersion + '-SNAPSHOT'
 }
+println "##teamcity[setParameter name='java.annotations.version' value='$projectVersion']"
 
 allprojects {
     group 'org.jetbrains'
