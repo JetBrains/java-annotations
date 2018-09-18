@@ -9,7 +9,7 @@ The annotations are published on [Maven Central](http://repo1.maven.org/maven2/o
 using gradle write the following in `build.gradle` file:
 ```
 dependencies {
-    compile 'org.jetbrains:annotations:16.0.2'
+    compile 'org.jetbrains:annotations:16.0.3'
 }
 
 ```
@@ -18,7 +18,7 @@ To add a dependency using Maven write the following in `pom.xml`:
 <dependency>
   <groupId>org.jetbrains</groupId>
   <artifactId>annotations</artifactId>
-  <version>16.0.2</version>
+  <version>16.0.3</version>
 </dependency>
 ```
 
