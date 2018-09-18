@@ -38,6 +38,9 @@ configure([project(':java5'), project(':java8')]) {
     task mainJar(type: Jar) {
         from sourceSets.main.output
         from project(':common').sourceSets.main.output
+        manifest {
+            attributes('Automatic-Module-Name': 'org.jetbrains.' + archivesBaseName)
+        }
     }
 
     task sourceJar(type: Jar) {
