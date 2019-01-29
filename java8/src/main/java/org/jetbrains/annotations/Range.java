@@ -10,8 +10,7 @@ import java.lang.annotation.*;
  * <pre>{@code public @Range(from = 0, to = Integer.MAX_VALUE) int length() { 
  *   return this.length; // returns a non-negative integer
  * }}</pre>
- * </p>
- * 
+ *
  * @since 17.0.0
  */
 @Documented
