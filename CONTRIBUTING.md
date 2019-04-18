@@ -14,4 +14,9 @@ Also update version number in the examples in README.md file.
 ### Backward compatibility
 All the changes should be backward compatible i.e. you can add new annotations and new elements into existing annotation. 
 If it's absolutely necessary to remove an annotation or its element we must firstly release a new major version where 
-the corresponding element is marked as deprecated and then remove it in one of the next major versions.        
+the corresponding element is marked as deprecated and then remove it in one of the next major versions.
+
+### Retention policy
+No annotation in this package should have `RUNTIME` retention policy. Only `SOURCE` and `CLASS` policy is accepted. 
+The `CLASS` policy is preferred. The `SOURCE` policy could be used in rare cases when compilation could not preserve all 
+the necessary information (e.g. `@MagicConstant` annotation).
