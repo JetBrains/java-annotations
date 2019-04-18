@@ -9,7 +9,7 @@ The annotations are published on [Maven Central](http://repo1.maven.org/maven2/o
 using gradle write the following in `build.gradle` file:
 ```
 dependencies {
-    compile 'org.jetbrains:annotations:17.0.0'
+    compileOnly 'org.jetbrains:annotations:17.0.0'
 }
 
 ```
