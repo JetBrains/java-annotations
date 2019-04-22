@@ -6,7 +6,7 @@ interpreted by IDEs and static analysis tools to improve code analysis.
 
 ## Using the annotations
 The annotations are published on [Maven Central](http://repo1.maven.org/maven2/org/jetbrains/annotations/) and [JCenter](https://jcenter.bintray.com/org/jetbrains/annotations/). To add a dependency
-using gradle write the following in `build.gradle` file:
+using gradle write the following in the `build.gradle` file:
 ```
 dependencies {
     compileOnly 'org.jetbrains:annotations:17.0.0'
@@ -22,8 +22,8 @@ To add a dependency using Maven write the following in `pom.xml`:
 </dependency>
 ```
 
-`annotations` artifact require JDK 1.8 or higher. If your project is compiled using JDK 1.5, 1.6 or 1.7 you can use 
-`annotations-java5` artifact instead.
+`annotations` artifact requires JDK 1.8 or higher. If your project is compiled using JDK 1.5, 1.6 or 1.7 you can use 
+the `annotations-java5` artifact instead.
 
 
     
