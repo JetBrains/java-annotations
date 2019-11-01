@@ -6,6 +6,9 @@ import org.intellij.lang.annotations.Language;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
 
+/**
+ * @since 18.0.0
+ */
 public interface Debug {
   /**
    * Allows to change the presentation of an object in debuggers
