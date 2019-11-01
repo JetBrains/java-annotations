@@ -9,12 +9,12 @@ import java.lang.annotation.Target;
 /**
  * @since 18.0.0
  */
-public interface Debug {
+public final class Debug {
   /**
    * Allows to change the presentation of an object in debuggers
    */
   @Target(ElementType.TYPE)
-  @interface Renderer {
+  public @interface Renderer {
     /**
      * Expression to be evaluated and used as the textual representation of the object.<br>
      * {@code this} refers to the class instance being presented

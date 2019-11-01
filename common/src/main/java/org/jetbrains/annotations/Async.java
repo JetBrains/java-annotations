@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
  *
  * @author egor
  */
-public interface Async {
+public final class Async {
 
   /**
    * Indicates that the marked method schedules async computation.
@@ -20,7 +20,7 @@ public interface Async {
    */
   @Retention(RetentionPolicy.CLASS)
   @Target({ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.PARAMETER})
-  @interface Schedule {}
+  public @interface Schedule {}
 
   /**
    * Indicates that the marked method executes async computation.
@@ -29,5 +29,5 @@ public interface Async {
    */
   @Retention(RetentionPolicy.CLASS)
   @Target({ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.PARAMETER})
-  @interface Execute {}
+  public @interface Execute {}
 }
