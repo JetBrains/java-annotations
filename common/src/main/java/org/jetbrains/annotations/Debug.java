@@ -4,6 +4,8 @@ package org.jetbrains.annotations;
 import org.intellij.lang.annotations.Language;
 
 import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
@@ -14,6 +16,7 @@ public final class Debug {
    * Allows to change the presentation of an object in debuggers
    */
   @Target(ElementType.TYPE)
+  @Retention(RetentionPolicy.CLASS)
   public @interface Renderer {
     /**
      * Expression to be evaluated and used as the textual representation of the object.<br>
