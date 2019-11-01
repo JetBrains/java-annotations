@@ -3,6 +3,11 @@ package org.jetbrains.annotations;
 
 import java.lang.annotation.*;
 
+/**
+ * Set of annotations which can be used to specify status of API Element.
+ *
+ * @since 18.0.0
+ */
 public final class ApiStatus {
   /**
    * <p>Indicates that a public API of the annotated element (class, method or field) is not in stable state yet. It may be renamed, changed or
