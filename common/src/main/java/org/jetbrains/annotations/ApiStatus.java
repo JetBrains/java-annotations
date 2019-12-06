@@ -33,7 +33,7 @@ public final class ApiStatus {
 
   /**
    * Indicates that the annotated element (class, method, field, etc) must not be considered as a public API. It's made visible to allow
-   * usages in other packages of the declaring module, but it must not be used outside of that module. Such elements
+   * usages in other packages of the declaring library, but it must not be used outside of that library. Such elements
    * may be renamed, changed or removed in future versions.
    *
    * <p>If a package is marked with this annotation, all its containing classes are considered internal.
