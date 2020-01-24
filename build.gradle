@@ -40,7 +40,7 @@ configure([project(':java5'), project(':java8')]) {
         from sourceSets.main.output
         from project(':common').sourceSets.main.output
         manifest {
-            attributes('Automatic-Module-Name': 'org.jetbrains.' + archivesBaseName)
+            attributes('Automatic-Module-Name': 'org.jetbrains.' + archivesBaseName.replace('-', '_'))
         }
     }
 
