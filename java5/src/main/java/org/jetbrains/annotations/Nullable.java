@@ -33,8 +33,6 @@ import java.lang.annotation.*;
  * <br>
  * On the other hand, the {@link java.lang.ref.Reference#get()} should be annotated {@link Nullable} because
  * it returns {@code null} if object got collected which can happen at any time completely unexpectedly.
- *
- * @author max
  */
 @Documented
 @Retention(RetentionPolicy.CLASS)

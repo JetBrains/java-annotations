@@ -23,8 +23,6 @@ import java.lang.annotation.*;
  * to return (for methods), pass to (parameters) and hold (local variables and fields).
  * Apart from documentation purposes this annotation is intended to be used by static analysis tools
  * to validate against probable runtime errors and element contract violations.
- *
- * @author max
  */
 @Documented
 @Retention(RetentionPolicy.CLASS)

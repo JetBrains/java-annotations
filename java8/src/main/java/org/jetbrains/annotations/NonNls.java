@@ -49,7 +49,6 @@ import java.lang.annotation.Target;
  * the package and all its subpackages are not reported as requiring localization.</li>
  * </ul>
  *
- * @author max
  * @see Nls
  */
 @Documented

@@ -45,7 +45,6 @@ import java.lang.annotation.*;
  * the package and all its subpackages are not reported as requiring localization.</li>
  * </ul>
  *
- * @author max
  * @see Nls
  */
 @Documented
