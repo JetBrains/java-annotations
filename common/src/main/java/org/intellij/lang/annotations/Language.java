@@ -16,6 +16,8 @@
 
 package org.intellij.lang.annotations;
 
+import org.jetbrains.annotations.NonNls;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
@@ -49,7 +51,7 @@ public @interface Language {
    *   <li>"RegExp" - Regular expression supported by Java {@link java.util.regex.Pattern}</li>
    * </ul>
    */
-  String value();
+  @NonNls String value();
 
   /**
    * A constant prefix that is assumed to be implicitly added before the literal. 
@@ -57,10 +59,10 @@ public @interface Language {
    * E.g. if the method parameter accepts a Java method, it could be annotated as
    * {@code void methodProcessor(@Language(value="JAVA", prefix="class X {", suffix="}")}.
    */
-  String prefix() default "";
+  @NonNls String prefix() default "";
 
   /**
    * A constant suffix that is assumed to be implicitly added after the literal. See {@link #prefix()} for details.
    */
-  String suffix() default "";
+  @NonNls String suffix() default "";
 }
