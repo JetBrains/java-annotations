@@ -30,9 +30,10 @@ import java.lang.annotation.Target;
  * This annotation also could be used as a meta-annotation, to define other annotations for convenience. 
  * E.g. the following annotation could be defined to annotate the strings that represent UUIDs:
  * 
- * <pre>{@code
- * @Pattern("[\\dA-Fa-f]{8}-[\\dA-Fa-f]{4}-[\\dA-Fa-f]{4}-[\\dA-Fa-f]{4}-[\\dA-Fa-f]{12}")
- * @interface UUID {}}</pre>
+ * <pre>
+ * &#64;Pattern("[\\dA-Fa-f]{8}-[\\dA-Fa-f]{4}-[\\dA-Fa-f]{4}-[\\dA-Fa-f]{4}-[\\dA-Fa-f]{12}")
+ * &#64;interface UUID {}
+ * </pre>
  *
  * @see RegExp
  */

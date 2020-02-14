@@ -44,8 +44,6 @@ import java.lang.annotation.*;
  * <li>If a package is annotated with {@code NonNls}, all string literals in
  * the package and all its subpackages are not reported as requiring localization.</li>
  * </ul>
- *
- * @see Nls
  */
 @Documented
 @Retention(RetentionPolicy.CLASS)

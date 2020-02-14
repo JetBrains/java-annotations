@@ -33,9 +33,10 @@ import static java.lang.annotation.ElementType.*;
  * This annotation also could be used as a meta-annotation, to define other annotations for convenience. 
  * E.g. the following annotation could be defined to annotate the strings that represent Java methods:
  * 
- * <pre>{@code
- * @Language(value = "JAVA", prefix = "class X{", suffix = "}")
- * @interface JavaMethod {}}</pre>
+ * <pre>
+ *   &#64;Language(value = "JAVA", prefix = "class X{", suffix = "}")
+ *   &#64;interface JavaMethod {}
+ * </pre>
  */
 @Retention(RetentionPolicy.CLASS)
 @Target({ METHOD, FIELD, PARAMETER, LOCAL_VARIABLE, ANNOTATION_TYPE })
