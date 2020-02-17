@@ -13,7 +13,7 @@ dependencies {
 }
 
 ```
-To add a dependency using Maven write the following in `pom.xml`:
+To add a dependency using Maven, write the following in `pom.xml`:
 ```xml
 <dependency>
   <groupId>org.jetbrains</groupId>
@@ -23,7 +23,5 @@ To add a dependency using Maven write the following in `pom.xml`:
 ```
 
 `annotations` artifact requires JDK 1.8 or higher. If your project is compiled using JDK 1.5, 1.6 or 1.7 you can use 
-the `annotations-java5` artifact instead.
-
-
-    
+the `annotations-java5` artifact instead. Please note that `annotations-java5` artifact is considered a legacy, so
+ most of new annotations will appear in the `annotations` artifact only.
