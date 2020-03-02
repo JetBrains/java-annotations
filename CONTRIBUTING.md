@@ -9,7 +9,13 @@ Update `projectVersion` property in gradle.properties file before doing the chan
 a new annotation highly related to an existing one
 * increase the major component of the version if you're adding a completely new annotation.
 
-Also update version number in the examples in README.md file.  
+During the new version release:
+* Update version number in the examples in README.md
+* Add a new section in CHANGELOG.md describing the changes in the new version
+* Add a tag with the version number to the corresponding commit
+* Push changes
+* Use 'Draft a new release' button on the Releases GitHub page; select the added tag; copy it to the release title
+ field; copy the added changelog section into the release details field.
 
 ### Backward compatibility
 All the changes should be backward compatible i.e. you can only add new annotations and new elements into existing annotation. 
