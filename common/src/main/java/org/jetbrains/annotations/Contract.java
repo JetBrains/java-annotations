@@ -65,7 +65,7 @@ public @interface Contract {
   /**
    * Contains the contract clauses describing causal relations between call arguments and the returned value
    */
-  String value() default "";
+  @NonNls String value() default "";
 
   /**
    * Specifies that the annotated method has no visible side effects.
@@ -102,5 +102,5 @@ public @interface Contract {
    * <strong>Warning: This annotation parameter is experimental and may be changed or removed without further notice!</strong>
    * @return a mutation specifier string
    */
-  String mutates() default "";
+  @NonNls String mutates() default "";
 }

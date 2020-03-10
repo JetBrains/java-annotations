@@ -23,6 +23,7 @@ public final class Debug {
      * {@code this} refers to the class instance being presented
      */
     @Language(value = "JAVA", prefix = "class Renderer{String $text(){return ", suffix = ";}}")
+    @NonNls
     String text() default "";
 
     /**
@@ -31,6 +32,7 @@ public final class Debug {
      * {@code this} refers to the class instance being presented
      */
     @Language(value = "JAVA", prefix = "class Renderer{Object[] $childrenArray(){return ", suffix = ";}}")
+    @NonNls
     String childrenArray() default "";
 
     /**
@@ -39,6 +41,7 @@ public final class Debug {
      * {@code this} refers to the class instance being presented
      */
     @Language(value = "JAVA", prefix = "class Renderer{boolean $hasChildren(){return ", suffix = ";}}")
+    @NonNls
     String hasChildren() default "";
   }
 }

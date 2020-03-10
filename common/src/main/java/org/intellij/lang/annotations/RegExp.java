@@ -15,6 +15,8 @@
  */
 package org.intellij.lang.annotations;
 
+import org.jetbrains.annotations.NonNls;
+
 import static java.lang.annotation.ElementType.*;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -36,9 +38,9 @@ public @interface RegExp {
     /**
      * A constant prefix that is assumed to be implicitly added before the regular expression.
      */
-    String prefix() default "";
+    @NonNls String prefix() default "";
     /**
      * A constant suffix that is assumed to be implicitly added after the regular expression.
      */
-    String suffix() default "";
+    @NonNls String suffix() default "";
 }

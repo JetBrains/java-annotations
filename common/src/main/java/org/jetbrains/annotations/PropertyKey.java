@@ -35,5 +35,5 @@ public @interface PropertyKey {
    * directory where the resource bundle is located and the base name of the resource
    * bundle (with no locale specifier or extension), separated with a dot.
    */
-  String resourceBundle();
+  @NonNls String resourceBundle();
 }

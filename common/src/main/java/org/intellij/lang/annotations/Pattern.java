@@ -16,6 +16,8 @@
 
 package org.intellij.lang.annotations;
 
+import org.jetbrains.annotations.NonNls;
+
 import static java.lang.annotation.ElementType.*;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -45,5 +47,6 @@ public @interface Pattern {
      * passed as arguments to the annotated parameters, or returned from the annotated methods.
      */
     @Language("RegExp")
+    @NonNls
     String value();
 }

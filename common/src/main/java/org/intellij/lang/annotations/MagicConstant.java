@@ -15,6 +15,8 @@
  */
 package org.intellij.lang.annotations;
 
+import org.jetbrains.annotations.NonNls;
+
 import java.lang.annotation.*;
 
 /**
@@ -94,7 +96,7 @@ public @interface MagicConstant {
   /**
    * @return String values (typically named constants) which are allowed here.
    */
-  String[] stringValues() default {};
+  @NonNls String[] stringValues() default {};
 
   /**
    * @return allowed int flags (i.e. values (typically named constants) which can be combined with bitwise OR operator (|).
@@ -124,7 +126,7 @@ public @interface MagicConstant {
    * cursorType = Cursor.E_RESIZE_CURSOR; // OK: "magic" constant used.
    * }</tt></pre>
    */
-  Class valuesFromClass() default void.class;
+  Class<?> valuesFromClass() default void.class;
 
   /**
    * @return allowed int flags which are defined in the specified class public static final constants.
@@ -140,5 +142,5 @@ public @interface MagicConstant {
    * eventMask = InputEvent.CTRL_MASK | InputEvent.ALT_MASK; // OK: combined several constants via bitwise OR
    * }</tt></pre>
    */
-  Class flagsFromClass() default void.class;
+  Class<?> flagsFromClass() default void.class;
 }
