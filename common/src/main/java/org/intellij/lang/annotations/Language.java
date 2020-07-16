@@ -52,6 +52,7 @@ public @interface Language {
    *   <li>"JAVA" - Java programming language</li>
    *   <li>"HTML" - HTML</li>
    *   <li>"XML" - XML</li>
+   *   <li>"kotlin" - Kotlin</li>
    *   <li>"RegExp" - Regular expression supported by Java {@link java.util.regex.Pattern}</li>
    * </ul>
    */
