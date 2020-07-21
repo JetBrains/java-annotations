@@ -22,8 +22,10 @@ import java.lang.annotation.*;
  * <p>
  * Apart from documentation purposes this annotation is intended to be used by static analysis tools
  * to validate against element contract violations.
+ * <p>
+ * This annotation should be used only as a last resort.
  */
 @Documented
-@Retention(RetentionPolicy.SOURCE)
+@Retention(RetentionPolicy.CLASS)
 @Target({ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.FIELD, ElementType.TYPE})
 public @interface TestOnly { }

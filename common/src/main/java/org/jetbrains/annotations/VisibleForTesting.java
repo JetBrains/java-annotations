@@ -31,10 +31,12 @@ import java.lang.annotation.Target;
  *   it's assumed that private access is enough for production code.</li>
  *   <li>It's illegal to annotate private member/type as VisibleForTesting.</li>
  * </ul>
+ * <p>
+ * This annotation should be used only as a last resort.
  * 
  * @since 20.0.0
  */
 @Documented
-@Retention(RetentionPolicy.SOURCE)
+@Retention(RetentionPolicy.CLASS)
 @Target({ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.FIELD, ElementType.TYPE})
 public @interface VisibleForTesting { }
