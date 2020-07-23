@@ -32,7 +32,10 @@ import java.lang.annotation.Target;
  *   <li>It's illegal to annotate private member/type as VisibleForTesting.</li>
  * </ul>
  * <p>
- * This annotation should be used only as a last resort.
+ * This annotation means that the annotated element exposes internal data and breaks encapsulation 
+ * of the containing class; the annotation won't prevent its use from production code, developers 
+ * even won't see warnings if their IDE doesn't support the annotation. It's better to provide 
+ * proper API which can be used in production as well as in tests.
  * 
  * @since 20.0.0
  */

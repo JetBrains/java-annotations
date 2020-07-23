@@ -23,7 +23,10 @@ import java.lang.annotation.*;
  * Apart from documentation purposes this annotation is intended to be used by static analysis tools
  * to validate against element contract violations.
  * <p>
- * This annotation should be used only as a last resort.
+ * This annotation means that the annotated element exposes internal data and breaks encapsulation 
+ * of the containing class; the annotation won't prevent its use from production code, developers 
+ * even won't see warnings if their IDE doesn't support the annotation. It's better to provide 
+ * proper API which can be used in production as well as in tests.
  */
 @Documented
 @Retention(RetentionPolicy.CLASS)
