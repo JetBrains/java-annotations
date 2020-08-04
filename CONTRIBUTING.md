@@ -18,8 +18,9 @@ During the new version release:
  field; copy the added changelog section into the release details field.
   
 ### Java 5 package
-We generate annotations-java5 package for legacy clients this package cannot use ElementType.TYPE_USE.
-It's generated from common/src sources stripping the `, ElementType.TYPE_USE` substring from files.
+We generate annotations-java5 package for legacy clients. This package cannot use ElementType.TYPE_USE
+which appeared in Java 8. The Java 5 package is generated from common/src sources 
+stripping the `, ElementType.TYPE_USE` substring from files.
 So no Java features that appear in Java 6 or higher except `ElementType.TYPE_USE` should be used in common/src.
 New TYPE_USE annotations should be created in java8/src. They will not appear in annotations-java5 package. 
 
