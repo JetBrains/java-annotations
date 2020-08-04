@@ -48,26 +48,14 @@ project(':java5').archivesBaseName = 'annotations-java5'
 project(':java8').archivesBaseName = 'annotations'
 
 configure([project(':java5'), project(':java8')]) {
-    dependencies {
-        compile project(':common')
-    }
-
     task mainJar(type: Jar) {
-        from sourceSets.main.output
-        from project(':common').sourceSets.main.output
         manifest {
             attributes('Automatic-Module-Name': 'org.jetbrains.' + archivesBaseName.replace('-', '_'))
         }
     }
 
     task sourceJar(type: Jar) {
-        from sourceSets.main.java
-        from project(':common').sourceSets.main.java
         baseName = archivesBaseName + '-sources'
-    }
-
-    javadoc {
-        source = [sourceSets.main.java, project(':common').sourceSets.main.java]
     }
 
     task javadocJar(type: Jar) {
@@ -138,5 +126,59 @@ configure([project(':java5'), project(':java8')]) {
         }
     }
 
+}
+
+configure(project(':java5')) {
+    def generatedSourcesDir = "${buildDir}/generated/"
+
+    sourceSets {
+        generated {
+            java.srcDir generatedSourcesDir
+        }
+    }
+
+    task generateSrc(type: Copy) {
+        from project(':common').sourceSets.main.java
+        into generatedSourcesDir
+        filter { line -> line.replaceAll(", ElementType.TYPE_USE", "")}
+    }
+
+    compileJava {
+        dependsOn(generateSrc)
+        source sourceSets.generated.java
+    }
+
+    mainJar {
+        from sourceSets.main.output
+    }
+
+    sourceJar {
+        dependsOn(generateSrc)
+        from sourceSets.generated.java
+    }
+
+    javadoc {
+        source = [sourceSets.generated.java]
+    }
+}
+
+configure(project(':java8')) {
+    dependencies {
+        compile project(':common')
+    }
+
+    mainJar {
+        from sourceSets.main.output
+        from project(':common').sourceSets.main.output
+    }
+
+    sourceJar {
+        from sourceSets.main.java
+        from project(':common').sourceSets.main.java
+    }
+
+    javadoc {
+        source = [sourceSets.main.java, project(':common').sourceSets.main.java]
+    }
 }
 
