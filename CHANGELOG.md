@@ -1,6 +1,15 @@
 Changelog
 ===
 
+Version 20.0.0
+---
+* Added new annotation: `@MustBeInvokedByOverriders`.
+* Added new annotation: `@VisibleForTesting`. 
+* Added `TYPE_USE` target for `NonNls` annotation.
+* String attributes of annotations are marked as `@NonNls` where applicable.
+* Documentation for `@Nls` and `@NonNls` updated: now they could be used as meta-annotations.
+* Documentation added for `@Subst` annotation.
+
 Version 19.0.0
 ---
 * Added new annotations: `@Unmodifiable` and `@UnmodifiableView`.
