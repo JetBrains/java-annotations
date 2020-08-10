@@ -11,7 +11,7 @@ The annotations are published on [Maven Central](https://repo1.maven.org/maven2/
 using gradle write the following in the `build.gradle` file:
 ```
 dependencies {
-    compileOnly 'org.jetbrains:annotations:19.0.0'
+    compileOnly 'org.jetbrains:annotations:20.0.0'
 }
 
 ```
@@ -20,7 +20,7 @@ To add a dependency using Maven, write the following in `pom.xml`:
 <dependency>
   <groupId>org.jetbrains</groupId>
   <artifactId>annotations</artifactId>
-  <version>19.0.0</version>
+  <version>20.0.0</version>
 </dependency>
 ```
 
