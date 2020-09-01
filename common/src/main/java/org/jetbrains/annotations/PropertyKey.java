@@ -19,15 +19,15 @@ package org.jetbrains.annotations;
 import java.lang.annotation.*;
 
 /**
- * Specifies that a method parameter accepts arguments which must be valid property
- * keys in a specific resource bundle. When a string literal which is not a property
- * key in the specified bundle is passed as a parameter, IntelliJ IDEA highlights
- * it as an error. The annotation is also used to provide completion in string literals
- * passed as parameters.
+ * Specifies that a method parameter, local variable, field or a method return value 
+ * must be a valid property key in a specific resource bundle. When a string literal 
+ * which is not a property key in the specified bundle is passed as a parameter, 
+ * static analyzers may highlight it as an error. The annotation is also could be used 
+ * by IDEs to provide completion in string literals passed as parameters.
  */
 @Documented
 @Retention(RetentionPolicy.CLASS)
-@Target({ElementType.PARAMETER, ElementType.LOCAL_VARIABLE, ElementType.FIELD})
+@Target({ElementType.PARAMETER, ElementType.LOCAL_VARIABLE, ElementType.FIELD, ElementType.METHOD})
 public @interface PropertyKey {
   /**
    * The full-qualified name of the resource bundle in which the property keys must
