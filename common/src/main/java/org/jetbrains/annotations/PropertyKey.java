@@ -27,7 +27,7 @@ import java.lang.annotation.*;
  */
 @Documented
 @Retention(RetentionPolicy.CLASS)
-@Target({ElementType.PARAMETER, ElementType.LOCAL_VARIABLE, ElementType.FIELD, ElementType.METHOD})
+@Target({ElementType.PARAMETER, ElementType.LOCAL_VARIABLE, ElementType.FIELD, ElementType.TYPE_USE})
 public @interface PropertyKey {
   /**
    * The full-qualified name of the resource bundle in which the property keys must
