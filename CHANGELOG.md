@@ -1,6 +1,10 @@
 Changelog
 ===
 
+Version 20.1.0
+---
+* Added `TYPE_USE` target for `PropertyKey` annotation.
+
 Version 20.0.0
 ---
 * Added new annotation: `@MustBeInvokedByOverriders`.
