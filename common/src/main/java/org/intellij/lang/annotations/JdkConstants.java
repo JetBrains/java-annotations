@@ -23,8 +23,7 @@ import java.awt.event.InputEvent;
 import java.util.Calendar;
 import java.util.regex.Pattern;
 
-@SuppressWarnings("EmptyClass")
-public class JdkConstants {
+public final class JdkConstants {
 
   /**
    * Prohibited default constructor.
