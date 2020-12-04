@@ -25,6 +25,14 @@ import java.util.regex.Pattern;
 
 @SuppressWarnings("EmptyClass")
 public class JdkConstants {
+
+  /**
+   * Prohibited default constructor.
+   */
+  private JdkConstants() {
+    throw new AssertionError("JdkConstants should not be instantiated");
+  }
+
   @MagicConstant(intValues = {SwingConstants.LEFT, SwingConstants.CENTER, SwingConstants.RIGHT, SwingConstants.LEADING, SwingConstants.TRAILING})
   public @interface HorizontalAlignment {}
 

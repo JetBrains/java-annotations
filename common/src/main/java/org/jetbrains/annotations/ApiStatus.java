@@ -23,6 +23,14 @@ import java.lang.annotation.*;
  * @since 18.0.0
  */
 public final class ApiStatus {
+
+  /**
+   * Prohibited default constructor.
+   */
+  private ApiStatus() {
+    throw new AssertionError("ApiStatus should not be instantiated");
+  }
+
   /**
    * <p>Indicates that a public API of the annotated element (class, method or field) is not in stable state yet. It may be renamed, changed or
    * even removed in a future version. This annotation refers to API status only, it doesn't mean that the implementation has

@@ -29,6 +29,13 @@ import java.lang.annotation.Target;
 public final class Async {
 
   /**
+   * Prohibited default constructor.
+   */
+  private Async() {
+    throw new AssertionError("Async should not be instantiated");
+  }
+
+  /**
    * Indicates that the marked method schedules async computation.
    * Scheduled object is either {@code this}, or the annotated parameter value.
    */
