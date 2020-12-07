@@ -26,6 +26,14 @@ import java.lang.annotation.Target;
  * @since 18.0.0
  */
 public final class Debug {
+
+  /**
+   * Prohibited default constructor.
+   */
+  private Debug() {
+    throw new AssertionError("Debug should not be instantiated");
+  }
+
   /**
    * Allows to change the presentation of an object in debuggers
    */
