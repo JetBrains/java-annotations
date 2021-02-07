@@ -26,6 +26,7 @@ To add a dependency using Maven, write the following in `pom.xml`:
   <groupId>org.jetbrains</groupId>
   <artifactId>annotations</artifactId>
   <version>20.1.0</version>
+  <scope>provided</scope>
 </dependency>
 ```
 
