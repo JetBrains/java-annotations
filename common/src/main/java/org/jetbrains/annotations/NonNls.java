@@ -19,7 +19,7 @@ package org.jetbrains.annotations;
 import java.lang.annotation.*;
 
 /**
- * Specifies that an element of the program is not an user-visible string which needs to be localized,
+ * Specifies that an element of the program is not a user-visible string which needs to be localized,
  * or does not contain such strings. This annotation is intended to be used by localization tools for
  * detecting strings which should not be reported as requiring localization.
  * <ul>
