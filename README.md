@@ -12,7 +12,7 @@ interpreted by IDEs and static analysis tools to improve code analysis.
 - [JavaDoc](https://javadoc.io/doc/org.jetbrains/annotations-java5) for legacy Java 5.0 compatible package
 
 ## Using the annotations
-The annotations are published on [Maven Central](https://repo1.maven.org/maven2/org/jetbrains/annotations/) and [JCenter](https://jcenter.bintray.com/org/jetbrains/annotations/). To add a dependency
+The annotations are published on [Maven Central](https://repo1.maven.org/maven2/org/jetbrains/annotations/). To add a dependency
 using gradle write the following in the `build.gradle` file:
 ```
 dependencies {
