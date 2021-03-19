@@ -15,3 +15,15 @@
  */
 
 sourceCompatibility = 1.9
+
+dependencies {
+    compile project(':common')
+}
+
+compileJava {
+    // Without common sources, compiler complains that exported packages don't exist
+    source = [sourceSets.main.java, project(':common').sourceSets.main.java]
+}
+
+task mainJar(type: Jar) {
+}

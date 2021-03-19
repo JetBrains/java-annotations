@@ -47,29 +47,6 @@ subprojects {
 project(':java5').archivesBaseName = 'annotations-java5'
 project(':java8').archivesBaseName = 'annotations'
 
-def jdk5Home = System.getenv("JDK_5")
-if (hasProperty("JDK_5")) {
-    jdk5Home = JDK_5
-}
-if (jdk5Home == null) {
-    throw new GradleException('JDK_5 environment variable is not defined. It must point to any JDK that ' +
-            'is capable to compile with Java 5 target (Any JDK version from 1.5 to 1.8)')
-}
-
-configure(project(':module-info')) {
-    dependencies {
-        compile project(':common')
-    }
-
-    compileJava {
-        // Without common sources, compiler complains that exported packages don't exist
-        source = [sourceSets.main.java, project(':common').sourceSets.main.java]
-    }
-
-    task mainJar(type: Jar) {
-    }
-}
-
 configure([project(':java5'), project(':java8')]) {
     dependencies {
         compile project(':module-info')
@@ -161,59 +138,4 @@ configure([project(':java5'), project(':java8')]) {
             }
         }
     }
-
 }
-
-configure(project(':java5')) {
-    def generatedSourcesDir = "${buildDir}/generated/"
-
-    sourceSets {
-        generated {
-            java.srcDir generatedSourcesDir
-        }
-    }
-
-    task generateSrc(type: Copy) {
-        from project(':common').sourceSets.main.java
-        into generatedSourcesDir
-        filter { line -> line.replaceAll(", ElementType.TYPE_USE", "")}
-    }
-
-    compileJava {
-        options.fork = true
-        options.forkOptions.executable = "$jdk5Home/bin/javac"
-        dependsOn(generateSrc)
-        source sourceSets.generated.java
-    }
-
-    mainJar {
-        from sourceSets.main.output
-    }
-
-    sourceJar {
-        dependsOn(generateSrc)
-        from sourceSets.generated.java
-    }
-
-    javadoc {
-        source = [sourceSets.generated.java]
-    }
-}
-
-configure(project(':java8')) {
-
-    mainJar {
-        from sourceSets.main.output
-        from project(':common').sourceSets.main.output
-    }
-
-    sourceJar {
-        from sourceSets.main.java
-        from project(':common').sourceSets.main.java
-    }
-
-    javadoc {
-        source = [sourceSets.main.java, project(':common').sourceSets.main.java]
-    }
-}
-

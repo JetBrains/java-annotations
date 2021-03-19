@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2020 JetBrains s.r.o.
+ * Copyright 2000-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,4 +15,47 @@
  */
 
 sourceCompatibility = 1.5
+
+def jdk5Home = System.getenv("JDK_5")
+if (hasProperty("JDK_5")) {
+    jdk5Home = JDK_5
+}
+if (jdk5Home == null) {
+    throw new GradleException('JDK_5 environment variable is not defined. It must point to any JDK that ' +
+            'is capable to compile with Java 5 target (Any JDK version from 1.5 to 1.8)')
+}
+
+def generatedSourcesDir = "${buildDir}/generated/"
+
+sourceSets {
+    generated {
+        java.srcDir generatedSourcesDir
+    }
+}
+
+task generateSrc(type: Copy) {
+    from project(':common').sourceSets.main.java
+    into generatedSourcesDir
+    filter { line -> line.replaceAll(", ElementType.TYPE_USE", "")}
+}
+
+compileJava {
+    options.fork = true
+    options.forkOptions.executable = "$jdk5Home/bin/javac"
+    dependsOn(generateSrc)
+    source sourceSets.generated.java
+}
+
+mainJar {
+    from sourceSets.main.output
+}
+
+sourceJar {
+    dependsOn(generateSrc)
+    from sourceSets.generated.java
+}
+
+javadoc {
+    source = [sourceSets.generated.java]
+}
 
