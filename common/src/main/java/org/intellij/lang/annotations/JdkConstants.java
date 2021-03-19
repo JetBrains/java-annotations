@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2020 JetBrains s.r.o.
+ * Copyright 2000-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,13 @@ import java.awt.event.InputEvent;
 import java.util.Calendar;
 import java.util.regex.Pattern;
 
+/**
+ * @deprecated this class will be removed in future versions to avoid Swing dependency, 
+ * which is unnecessary for most of the clients. No IDE or static analysis tool should know 
+ * about this class directly, as it creates new annotations using meta-annotations.
+ * If it's used in your project, please create similar annotations in your project directly.
+ */
+@Deprecated
 public final class JdkConstants {
 
   /**
