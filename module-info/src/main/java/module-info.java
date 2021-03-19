@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2021 JetBrains s.r.o.
+ * Copyright 2000-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-rootProject.name = 'annotations-parent'
-
-include 'common', 'java5', 'java8', 'module-info'
+module org.jetbrains.annotations {
+  exports org.intellij.lang.annotations;
+  exports org.jetbrains.annotations;
+  requires java.desktop;
+}

@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2020 JetBrains s.r.o.
+ * Copyright 2000-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,18 +47,54 @@ subprojects {
 project(':java5').archivesBaseName = 'annotations-java5'
 project(':java8').archivesBaseName = 'annotations'
 
-configure([project(':java5'), project(':java8')]) {
+def jdk5Home = System.getenv("JDK_5")
+if (hasProperty("JDK_5")) {
+    jdk5Home = JDK_5
+}
+if (jdk5Home == null) {
+    throw new GradleException('JDK_5 environment variable is not defined. It must point to any JDK that ' +
+            'is capable to compile with Java 5 target (Any JDK version from 1.5 to 1.8)')
+}
+
+configure(project(':module-info')) {
+    dependencies {
+        compile project(':common')
+    }
+
+    compileJava {
+        // Without common sources, compiler complains that exported packages don't exist
+        source = [sourceSets.main.java, project(':common').sourceSets.main.java]
+    }
+
     task mainJar(type: Jar) {
-        manifest {
-            attributes('Automatic-Module-Name': 'org.jetbrains.' + archivesBaseName.replace('-', '_'))
-        }
+    }
+}
+
+configure([project(':java5'), project(':java8')]) {
+    dependencies {
+        compile project(':module-info')
+    }
+    
+    task mainJar(type: Jar) {
+        into ("META-INF/versions/9", {
+            from (project(':module-info').sourceSets.main.output, {
+                // Skip extra files from common sources compiled with Java 9 target
+                include("module-info.class")
+            })
+        })
+        duplicatesStrategy = DuplicatesStrategy.FAIL
     }
 
     task sourceJar(type: Jar) {
+        into ("META-INF/versions/9", {
+            from project(':module-info').sourceSets.main.java
+        })
+        duplicatesStrategy = DuplicatesStrategy.FAIL
         baseName = archivesBaseName + '-sources'
     }
 
     task javadocJar(type: Jar) {
+        duplicatesStrategy = DuplicatesStrategy.FAIL
         from javadoc
     }
 
@@ -144,6 +180,8 @@ configure(project(':java5')) {
     }
 
     compileJava {
+        options.fork = true
+        options.forkOptions.executable = "$jdk5Home/bin/javac"
         dependsOn(generateSrc)
         source sourceSets.generated.java
     }
@@ -163,9 +201,6 @@ configure(project(':java5')) {
 }
 
 configure(project(':java8')) {
-    dependencies {
-        compile project(':common')
-    }
 
     mainJar {
         from sourceSets.main.output
