@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 module org.jetbrains.annotations {
+  requires static java.desktop;
   exports org.intellij.lang.annotations;
   exports org.jetbrains.annotations;
-  requires java.desktop;
 }
