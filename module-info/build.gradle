@@ -27,3 +27,5 @@ compileJava {
 
 task mainJar(type: Jar) {
 }
+
+javadoc.enabled = false
