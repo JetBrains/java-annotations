@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2020 JetBrains s.r.o.
+ * Copyright 2000-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -67,7 +67,7 @@ public @interface Flow {
   /**
    * true if the data source is container and we should track not the expression but its contents.<br>
    * E.g. the java.util.ArrayList constructor takes the collection and stores its contents:<br>
-   * ArrayList(<pre><tt>{@code @Flow(sourceIsContainer=true, targetIsContainer=true) Collection<? extends E> collection }</tt></pre>) <br>
+   * ArrayList(<pre>{@code @Flow(sourceIsContainer=true, targetIsContainer=true) Collection<? extends E> collection }</pre>) <br>
    * By default it's false.
    */
   boolean sourceIsContainer() default false;

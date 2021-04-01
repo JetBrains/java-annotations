@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2020 JetBrains s.r.o.
+ * Copyright 2000-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,10 +21,10 @@ import java.lang.annotation.*;
 
 /**
  * <p>This annotation intended to help IntelliJ IDEA and other IDEs to detect and auto-complete int and String constants used as an enumeration.
- * For example, in the {@link java.awt.Label#Label(String, int)} constructor the <tt><b>alignment</b></tt> parameter can be one of the following
+ * For example, in the {@link java.awt.Label#Label(String, int)} constructor the <code><b>alignment</b></code> parameter can be one of the following
  * int constants: {@link java.awt.Label#LEFT}, {@link java.awt.Label#CENTER} or {@link java.awt.Label#RIGHT}
  *
- * <p>So, if <tt>@MagicConstant</tt> annotation applied to this constructor, the IDE will check the constructor usages for the allowed values.
+ * <p>So, if <code>@MagicConstant</code> annotation applied to this constructor, the IDE will check the constructor usages for the allowed values.
  * <p>E.g.<br>
  *  <pre>{@code
  * new Label("text", 0); // 0 is not allowed
@@ -32,7 +32,7 @@ import java.lang.annotation.*;
  * }</pre>
  *
  * <p>
- * <tt>@MagicConstant</tt> can be applied to:
+ * <code>@MagicConstant</code> can be applied to:
  * <ul>
  *  <li> Field, local variable, parameter.
  *
@@ -60,20 +60,20 @@ import java.lang.annotation.*;
  * }</pre>
  *
  * <li>Annotation class<br>
- * Annotation class annotated with <tt>@MagicConstant</tt> created alias you can use to annotate
- * everything as if it was annotated with <tt>@MagicConstant</tt> itself.
+ * Annotation class annotated with <code>@MagicConstant</code> created alias you can use to annotate
+ * everything as if it was annotated with <code>@MagicConstant</code> itself.
  *
  * <br>E.g.<br>
  * <pre>{@code @MagicConstant(flags = {Font.PLAIN, Font.BOLD, Font.ITALIC}) }</pre>
  * <pre>{@code @interface FontStyle {} }</pre>
  *
  * The IDE will check constructs annotated with @FontStyle for allowed values:<br>
- * <tt>@FontStyle int myStyle = 3; // not allowed<br></tt>
- * <tt>@FontStyle int myStyle = Font.BOLD | Font.ITALIC; // OK</tt><br>
+ * <code>@FontStyle int myStyle = 3; // not allowed<br></code>
+ * <code>@FontStyle int myStyle = Font.BOLD | Font.ITALIC; // OK</code><br>
  *
  * </ul>
  *
- * The <tt>@MagicConstant</tt> annotation has SOURCE retention, i.e. it is removed upon compilation and does not create any runtime overhead.
+ * The <code>@MagicConstant</code> annotation has SOURCE retention, i.e. it is removed upon compilation and does not create any runtime overhead.
  */
 @Retention(RetentionPolicy.SOURCE)
 @Target({
@@ -85,11 +85,11 @@ public @interface MagicConstant {
   /**
    * @return int values (typically named constants) which are allowed here.
    * E.g.
-   * <pre><tt>
+   * <pre>
    * {@code
    * void setConfirmOpenNewProject(@MagicConstant(intValues = {OPEN_PROJECT_ASK, OPEN_PROJECT_NEW_WINDOW, OPEN_PROJECT_SAME_WINDOW})
    *                               int confirmOpenNewProject);
-   * }</tt></pre>
+   * }</pre>
    */
   long[] intValues() default {};
 
@@ -104,13 +104,13 @@ public @interface MagicConstant {
    * The literals "0" and "-1" are also allowed to denote absence and presense of all flags respectively.
    *
    * E.g.
-   * <pre><tt>
+   * <pre>
    * {@code @MagicConstant(flags = {HierarchyEvent.PARENT_CHANGED,HierarchyEvent.DISPLAYABILITY_CHANGED,HierarchyEvent.SHOWING_CHANGED})
    * int hFlags;
    *
    * hFlags = 3; // not allowed; should be "magic" constant.
    * if (hFlags & (HierarchyEvent.PARENT_CHANGED | HierarchyEvent.SHOWING_CHANGED) != 0); // OK: combined several constants via bitwise OR
-   * }</tt></pre>
+   * }</pre>
    */
   long[] flags() default {};
 
@@ -118,13 +118,13 @@ public @interface MagicConstant {
    * @return allowed values which are defined in the specified class public static final constants.
    *
    * E.g.
-   * <pre><tt>
+   * <pre>
    * {@code @MagicConstant(valuesFromClass = Cursor.class)
    * int cursorType;
    *
    * cursorType = 11; // not allowed; should be "magic" constant.
    * cursorType = Cursor.E_RESIZE_CURSOR; // OK: "magic" constant used.
-   * }</tt></pre>
+   * }</pre>
    */
   Class<?> valuesFromClass() default void.class;
 
@@ -134,13 +134,13 @@ public @interface MagicConstant {
    * The literals "0" and "-1" are also allowed to denote absence and presense of all flags respectively.
    *
    * E.g.
-   * <pre><tt>
+   * <pre>
    * {@code @MagicConstant(flagsFromClass = java.awt.InputEvent.class)
    * int eventMask;
    *
    * eventMask = 10; // not allowed; should be "magic" constant.
    * eventMask = InputEvent.CTRL_MASK | InputEvent.ALT_MASK; // OK: combined several constants via bitwise OR
-   * }</tt></pre>
+   * }</pre>
    */
   Class<?> flagsFromClass() default void.class;
 }
