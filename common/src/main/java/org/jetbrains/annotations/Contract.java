@@ -91,8 +91,8 @@ public @interface Contract {
   /**
    * Contains a specifier which describes which method parameters can be mutated during the method call.
    * <p>
-   * The following values are possible:
    * <table>
+   *   <caption>Possible values:</caption>
    *   <tr><td>"this"</td><td>Method mutates the receiver object, and doesn't mutates any objects passed as arguments (cannot be applied for static method or constructor)</td></tr>
    *   <tr><td>"param"</td><td>Method mutates the sole argument and doesn't mutate the receiver object (if applicable)</td></tr>
    *   <tr><td>"param1", "param2", ...</td><td>Method mutates the N-th argument</td></tr>
