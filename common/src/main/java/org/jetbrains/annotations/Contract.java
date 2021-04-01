@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2020 JetBrains s.r.o.
+ * Copyright 2000-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -92,7 +92,7 @@ public @interface Contract {
    * Contains a specifier which describes which method parameters can be mutated during the method call.
    * <p>
    * The following values are possible:
-   * <table summary="">
+   * <table>
    *   <tr><td>"this"</td><td>Method mutates the receiver object, and doesn't mutates any objects passed as arguments (cannot be applied for static method or constructor)</td></tr>
    *   <tr><td>"param"</td><td>Method mutates the sole argument and doesn't mutate the receiver object (if applicable)</td></tr>
    *   <tr><td>"param1", "param2", ...</td><td>Method mutates the N-th argument</td></tr>
