@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2020 JetBrains s.r.o.
+ * Copyright 2000-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,9 +23,9 @@ import java.lang.annotation.*;
  * Apart from documentation purposes this annotation is intended to be used by static analysis tools
  * to validate against element contract violations.
  * <p>
- * This annotation means that the annotated element exposes internal data and breaks encapsulation 
- * of the containing class; the annotation won't prevent its use from production code, developers 
- * even won't see warnings if their IDE doesn't support the annotation. It's better to provide 
+ * This annotation means that the annotated element exposes internal data and breaks encapsulation
+ * of the containing class; the annotation won't prevent its use from production code, developers
+ * even won't see warnings if their IDE doesn't support the annotation. It's better to provide
  * proper API which can be used in production as well as in tests.
  */
 @Documented

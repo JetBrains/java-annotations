@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2020 JetBrains s.r.o.
+ * Copyright 2000-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ import java.lang.annotation.*;
  * Applying this annotation to other types is not correct.
  * <p>
  * Example:
- * <pre>{@code public @Range(from = 0, to = Integer.MAX_VALUE) int length() { 
+ * <pre>{@code public @Range(from = 0, to = Integer.MAX_VALUE) int length() {
  *   return this.length; // returns a non-negative integer
  * }}</pre>
  *

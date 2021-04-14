@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2020 JetBrains s.r.o.
+ * Copyright 2000-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,16 +27,16 @@ import java.lang.annotation.*;
  * <pre>
  * &#64;Subst("Tahoma")
  * final String font = new JLabel().getFont().getName();
- * 
+ *
  * &#64;Language("HTML")
- * String message = "&lt;html&gt;&lt;span style='font: " + font + "; font-size:smaller'&gt;" 
+ * String message = "&lt;html&gt;&lt;span style='font: " + font + "; font-size:smaller'&gt;"
  *   + ... + "&lt;/span&gt;&lt;/html&gt;";
  * </pre>
  * <p>
  * Here the parser assumes that when {@code font} appears in the concatenation it's value is {@code "Tahoma"},
  * so it can continue parsing the concatenation.
  * </p>
- * 
+ *
  * @see Language
  * @see Pattern
  */

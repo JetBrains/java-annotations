@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2020 JetBrains s.r.o.
+ * Copyright 2000-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ import java.lang.annotation.Target;
  * detecting strings which should be reported as requiring localization.
  *
  * <p>
- * This annotation also could be used as a meta-annotation, to define derived annotations for convenience. 
+ * This annotation also could be used as a meta-annotation, to define derived annotations for convenience.
  * E.g. the following annotation could be defined to annotate the strings that represent dialog titles:
  *
  * <pre>
@@ -36,7 +36,7 @@ import java.lang.annotation.Target;
  * &#64;interface DialogTitle {}
  * </pre>
  * <p>
- * Note that using the derived annotation as meta-annotation is not supported. 
+ * Note that using the derived annotation as meta-annotation is not supported.
  * Meta-annotation works only one level deep.
  *
  * @see NonNls

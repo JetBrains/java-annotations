@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2020 JetBrains s.r.o.
+ * Copyright 2000-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,9 +20,9 @@ import java.lang.annotation.*;
 /**
  * An annotation which marks a {@link java.util.Collection} or {@link java.util.Map} type
  * as unmodifiable view. A collection or a map is unmodifiable view if any mutator methods
- * (e.g. {@link java.util.Collection#add(Object)}) throw exception or have no effect. 
- * However, the content of the collection or the map may still be updated by other code. 
- * 
+ * (e.g. {@link java.util.Collection#add(Object)}) throw exception or have no effect.
+ * However, the content of the collection or the map may still be updated by other code.
+ *
  * @see Unmodifiable
  * @since 19.0.0
  */

@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2020 JetBrains s.r.o.
+ * Copyright 2000-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,10 +19,10 @@ package org.jetbrains.annotations;
 import java.lang.annotation.*;
 
 /**
- * Specifies that a method parameter, local variable, field or a method return value 
- * must be a valid property key in a specific resource bundle. When a string literal 
- * which is not a property key in the specified bundle is passed as a parameter, 
- * static analyzers may highlight it as an error. The annotation is also could be used 
+ * Specifies that a method parameter, local variable, field or a method return value
+ * must be a valid property key in a specific resource bundle. When a string literal
+ * which is not a property key in the specified bundle is passed as a parameter,
+ * static analyzers may highlight it as an error. The annotation is also could be used
  * by IDEs to provide completion in string literals passed as parameters.
  */
 @Documented

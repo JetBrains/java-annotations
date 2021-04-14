@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2020 JetBrains s.r.o.
+ * Copyright 2000-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ import java.lang.annotation.Target;
  * Code editors may use this annotation to enable syntax highlighting, code completion and other features
  * inside the literals that assigned to the annotated variables, passed as arguments to the annotated parameters,
  * or returned from the annotated methods.
- * 
+ *
  * @see Language
  */
 @Retention(RetentionPolicy.CLASS)

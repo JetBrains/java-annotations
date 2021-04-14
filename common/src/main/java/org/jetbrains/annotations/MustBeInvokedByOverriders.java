@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2020 JetBrains s.r.o.
+ * Copyright 2000-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,10 +20,10 @@ import java.lang.annotation.*;
 
 /**
  * The annotation should be applied to overridable non-abstract method
- * and indicates that all the overriders must invoke this method via 
- * superclass method invocation expression. The static analysis tools 
+ * and indicates that all the overriders must invoke this method via
+ * superclass method invocation expression. The static analysis tools
  * may report a warning if overrider fails to invoke this method.
- * 
+ *
  * @since 20.0.0
  */
 @Documented
