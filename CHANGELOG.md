@@ -5,6 +5,7 @@ Version 21.0.0
 ---
 * Added new annotation: `@UnknownNullability`.
 * Proper JPMS module.
+* `JdkConstants` deprecated.
 
 Version 20.1.0
 ---
