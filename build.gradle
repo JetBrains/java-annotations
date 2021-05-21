@@ -1,3 +1,5 @@
+import jetbrains.sign.GpgSignSignatoryProvider
+
 /*
  * Copyright 2000-2021 JetBrains s.r.o.
  *
@@ -17,14 +19,21 @@
 buildscript {
     repositories {
         jcenter()
+        maven { url "https://packages.jetbrains.team/maven/p/jcs/maven" }
     }
     dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.jetbrains:jet-sign:38'
     }
 }
 
+plugins {
+    id "io.github.gradle-nexus.publish-plugin" version "1.1.0"
+}
+
 ext.projectVersion = projectVersion
-if (System.getenv('BINTRAY_USER') == null) {
+ext.publishingUser = System.getenv('PUBLISHING_USER')
+ext.publishingPassword = System.getenv('PUBLISHING_PASSWORD')
+if (ext.publishingPassword == null) {
     ext.projectVersion = ext.projectVersion + '-SNAPSHOT'
 }
 println "##teamcity[setParameter name='java.annotations.version' value='$projectVersion']"
@@ -34,10 +43,19 @@ allprojects {
     version rootProject.ext.projectVersion
 }
 
+nexusPublishing {
+    repositories {
+        sonatype {
+            username = rootProject.ext.publishingUser
+            password = rootProject.ext.publishingPassword
+        }
+    }
+}
+
 subprojects {
     apply plugin: 'java'
     apply plugin: 'maven-publish'
-    apply plugin: 'com.jfrog.bintray'
+    apply plugin: 'signing'
 
     repositories {
         mavenCentral()
@@ -82,6 +100,8 @@ configure([project(':java5'), project(':java8')]) {
     publishing {
         publications {
             mavenJava(MavenPublication) {
+                group rootProject.group
+                version rootProject.ext.projectVersion
                 artifactId archivesBaseName
                 artifact mainJar
                 artifact sourceJar {
@@ -122,20 +142,9 @@ configure([project(':java5'), project(':java8')]) {
             }
         }
     }
-    if (System.getenv('BINTRAY_USER') != null) {
-        bintray {
-            user = System.getenv('BINTRAY_USER')
-            key = System.getenv('BINTRAY_KEY')
-            publish = true
-            publications = ['mavenJava']
-            pkg {
-                userOrg = 'jetbrains'
-                repo = 'intellij-redist'
-                name = 'org.jetbrains:' + archivesBaseName
-                version {
-                    name = rootProject.ext.projectVersion
-                }
-            }
-        }
+
+    signing {
+        sign publishing.publications
+        signatories = new GpgSignSignatoryProvider()
     }
 }
