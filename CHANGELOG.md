@@ -1,6 +1,10 @@
 Changelog
 ===
 
+Version 21.0.1
+---
+* Multi-Release Jar: Manifest fixed 
+
 Version 21.0.0
 ---
 * Added new annotation: `@UnknownNullability`.
