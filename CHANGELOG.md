@@ -1,6 +1,10 @@
 Changelog
 ===
 
+Version 22.0.0
+---
+* Added new annotations: `@Blocking` and `@NonBlocking`.
+
 Version 21.0.1
 ---
 * Multi-Release Jar: Manifest fixed 

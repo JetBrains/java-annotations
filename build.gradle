@@ -18,7 +18,6 @@ import jetbrains.sign.GpgSignSignatoryProvider
 
 buildscript {
     repositories {
-        jcenter()
         maven { url "https://packages.jetbrains.team/maven/p/jcs/maven" }
     }
     dependencies {
