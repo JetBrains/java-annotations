@@ -115,7 +115,7 @@ public @interface MagicConstant {
   long[] flags() default {};
 
   /**
-   * @return allowed values which are defined in the specified class public static final constants.
+   * @return allowed values which are defined in the specified class static final constants.
    *
    * E.g.
    * <pre>
@@ -129,7 +129,7 @@ public @interface MagicConstant {
   Class<?> valuesFromClass() default void.class;
 
   /**
-   * @return allowed int flags which are defined in the specified class public static final constants.
+   * @return allowed int flags which are defined in the specified class static final constants.
    * The difference from the {@link #valuesFromClass()} is that flags are allowed to be combined (via plus:+ or bitwise OR: |) whereas values aren't.
    * The literals "0" and "-1" are also allowed to denote absence and presense of all flags respectively.
    *
