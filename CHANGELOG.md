@@ -1,6 +1,10 @@
 Changelog
 ===
 
+Version 22.1.0
+---
+* Allow `@NotNull` and `@Nullable` on package declarations.
+
 Version 22.0.0
 ---
 * Added new annotations: `@Blocking` and `@NonBlocking`.
