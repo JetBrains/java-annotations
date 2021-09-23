@@ -20,7 +20,9 @@ import java.lang.annotation.*;
 
 /**
  * An element annotated with {@link Nullable} claims {@code null} value is perfectly <em>valid</em>
- * to return (for methods), pass to (parameters) or hold in (local variables and fields).
+ * to return (for methods), pass to (parameters) or hold in (local variables and fields). When a package
+ * is annotated with {@link Nullable} it claims that all fields and the return value for methods in every
+ * class of this package are nullable by default.
  * Apart from documentation purposes this annotation is intended to be used by static analysis tools
  * to validate against probable runtime errors or element contract violations.
  * <p>
@@ -36,7 +38,7 @@ import java.lang.annotation.*;
  */
 @Documented
 @Retention(RetentionPolicy.CLASS)
-@Target({ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER, ElementType.LOCAL_VARIABLE, ElementType.TYPE_USE})
+@Target({ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER, ElementType.LOCAL_VARIABLE, ElementType.TYPE_USE, ElementType.PACKAGE})
 public @interface Nullable {
   /**
    * @return textual reason when the annotated value could be null, for documentation purposes.
