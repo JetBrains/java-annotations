@@ -19,10 +19,32 @@ package org.jetbrains.annotations;
 import java.lang.annotation.*;
 
 /**
- * Indicates that the annotated execution context (e.g. coroutine dispatcher, scheduler, etc.) allows blocking calls inside.
+ * Indicates that the annotated executor (e.g. coroutine dispatcher, scheduler, etc.)
+ * allows blocking methods execution.
+ *
+ * If a given context does not allow blocking calls, {@link NonBlockingExecutor} should be used.
+ *
+ * Example:
+ * <pre>
+ * {@code
+ *  class ExampleService {
+ *      @BlockingContext
+ *      val dispatcher: CoroutineContext
+ *          get() { ... }
+ *
+ *      suspend fun foo() {
+ *          val result = withContext(dispatcher) {
+ *              blockingBuzz() // no IDE warning
+ *          }
+ *      }
+ *
+ *      @Blocking fun blockingBuzz() { ... }
+ *  }
+ * }
+ * </pre>
  */
 @Documented
 @Retention(RetentionPolicy.CLASS)
 @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER, ElementType.TYPE_USE})
-public @interface BlockingContext {
+public @interface BlockingExecutor {
 }
