@@ -22,13 +22,13 @@ import java.lang.annotation.*;
  * Indicates that the annotated executor (e.g. coroutine dispatcher, scheduler, etc.)
  * does not allow blocking methods execution.
  *
- * If a given context allows blocking calls, {@link BlockingExecutor} should be used.
+ * If a given executor allows blocking calls, {@link BlockingExecutor} should be used.
  *
- * Example:
+ * Example 1 (Kotlin coroutines):
  * <pre>
  * {@code
- *  class ExampleService {
- *      @NonBlockingContext
+ *  class NonBlockingExampleService {
+ *      @NonBlockingExecutor
  *      val dispatcher: CoroutineContext
  *          get() { ... }
  *
@@ -42,6 +42,28 @@ import java.lang.annotation.*;
  *  }
  * }
  * </pre>
+ *
+ * <br>
+ * Example 2 (Java with Reactor framework):
+ * <pre>
+ * {@code
+ *  class NonBlockingExampleService {
+ *      private static final @NonBlockingExecutor Scheduler operationsScheduler =
+ *              Schedulers.newParallel("parallel");
+ *
+ *      public Flux<String> foo(Flux<String> urls) {
+ *          return urls.publishOn(operationsScheduler)
+ *                  .filter(url -> blockingBuzz(url) != null);  // IDE warning: `Possibly blocking call in non-blocking context`
+ *      }
+ *
+ *      @Blocking
+ *      private String blockingBuzz(String url) { ... }
+ *  }
+ * }
+ * </pre>
+ *
+ *  @see Blocking
+ *  @see NonBlocking
  */
 @Documented
 @Retention(RetentionPolicy.CLASS)
