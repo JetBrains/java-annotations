@@ -19,7 +19,7 @@ package org.jetbrains.annotations;
 import java.lang.annotation.*;
 
 /**
- * Indicates that the annotated executor (e.g. coroutine dispatcher, scheduler, etc.)
+ * Indicates that the annotated executor (CoroutineContext, Scheduler)
  * allows blocking methods execution.
  *
  * If a given executor does not allow blocking calls, {@link NonBlockingExecutor} should be used.
