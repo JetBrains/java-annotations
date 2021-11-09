@@ -66,6 +66,6 @@ import java.lang.annotation.*;
  */
 @Documented
 @Retention(RetentionPolicy.CLASS)
-@Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER, ElementType.TYPE_USE})
+@Target({ElementType.TYPE, ElementType.TYPE_USE})
 public @interface BlockingExecutor {
 }
