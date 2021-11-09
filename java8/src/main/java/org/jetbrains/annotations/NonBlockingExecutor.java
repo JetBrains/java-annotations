@@ -20,9 +20,11 @@ import java.lang.annotation.*;
 
 /**
  * Indicates that the annotated executor (CoroutineContext, Scheduler)
- * does not allow blocking methods execution.
+ * does not allow blocking methods execution.<br><br>
+ * <p>
  *
- * If a given executor allows blocking calls, {@link BlockingExecutor} should be used.
+ * If a given executor allows blocking calls, {@link BlockingExecutor} should be used.<br><br>
+ * <p>
  *
  * Example 1 (Kotlin coroutines):
  * <pre>
@@ -41,9 +43,8 @@ import java.lang.annotation.*;
  *      @Blocking fun blockingBuzz() { ... }
  *  }
  * }
- * </pre>
- *
- * <br>
+ * </pre><br>
+ * <p>
  * Example 2 (Java with Reactor framework):
  * <pre>
  * {@code
@@ -61,7 +62,7 @@ import java.lang.annotation.*;
  *  }
  * }
  * </pre>
- *
+ * <p>
  *  @see Blocking
  *  @see NonBlocking
  */
