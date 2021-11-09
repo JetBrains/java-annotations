@@ -29,8 +29,7 @@ import java.lang.annotation.*;
  * <pre>
  * {@code
  *  class BlockingExampleService {
- *      @BlockingExecutor
- *      val dispatcher: CoroutineContext
+ *      val dispatcher: @BlockingExecutor CoroutineContext
  *          get() { ... }
  *
  *      suspend fun foo() {

@@ -30,8 +30,7 @@ import java.lang.annotation.*;
  * <pre>
  * {@code
  *  class NonBlockingExampleService {
- *      @NonBlockingExecutor
- *      val dispatcher: CoroutineContext
+ *      val dispatcher: @NonBlockingExecutor CoroutineContext
  *          get() { ... }
  *
  *      suspend fun foo() {
