@@ -27,7 +27,7 @@ import java.lang.annotation.*;
  *
  * <p>
  * Example 1 (Kotlin coroutines):
- * <pre>{@code
+ * <pre><code>
  *  class NonBlockingExampleService {
  *      val dispatcher: @NonBlockingExecutor CoroutineContext
  *          get() { ... }
@@ -38,26 +38,26 @@ import java.lang.annotation.*;
  *          }
  *      }
  *
- *      @Blocking fun blockingBuzz() { ... }
+ *      &#064;Blocking fun blockingBuzz() { ... }
  *  }
- * }</pre>
+ * </code></pre>
  *
  * <p>
  * Example 2 (Java with Reactor framework):
- * <pre>{@code
+ * <pre><code>
  *  class NonBlockingExampleService {
  *      private static final @NonBlockingExecutor Scheduler operationsScheduler =
  *              Schedulers.newParallel("parallel");
  *
- *      public Flux<String> foo(Flux<String> urls) {
+ *      public Flux&lt;String&gt; foo(Flux&lt;String&gt; urls) {
  *          return urls.publishOn(operationsScheduler)
- *                  .filter(url -> blockingBuzz(url) != null);  // IDE warning: `Possibly blocking call in non-blocking context`
+ *                  .filter(url -&gt; blockingBuzz(url) != null);  // IDE warning: `Possibly blocking call in non-blocking context`
  *      }
  *
- *      @Blocking
+ *      &#064;Blocking
  *      private String blockingBuzz(String url) { ... }
  *  }
- * }</pre>
+ * </code></pre>
  *  @see Blocking
  *  @see NonBlocking
  */

@@ -26,7 +26,7 @@ import java.lang.annotation.*;
  *
  * <p>
  * Example 1 (Kotlin coroutines):
- * <pre>{@code
+ * <pre><code>
  *  class BlockingExampleService {
  *      val dispatcher: @BlockingExecutor CoroutineContext
  *          get() { ... }
@@ -37,26 +37,26 @@ import java.lang.annotation.*;
  *          }
  *      }
  *
- *      @Blocking fun blockingBuzz() { ... }
+ *      &#064;Blocking fun blockingBuzz() { ... }
  *  }
- * }</pre>
+ * </code></pre>
  *
  * <p>
  * Example 2 (Java with Reactor framework):
- * <pre>{@code
+ * <pre><code>
  * class BlockingExampleService {
  *     private static final @BlockingExecutor Scheduler blockingScheduler =
  *             Schedulers.newBoundedElastic(4, 10, "executor");
  *
- *     public Flux<String> foo(Flux<String> urls) {
+ *     public Flux&lt;String&gt; foo(Flux&lt;String&gt; urls) {
  *         return urls.publishOn(blockingScheduler)
- *                 .map(url -> blockingBuzz(url));  // no IDE warning
+ *                 .map(url -&gt; blockingBuzz(url));  // no IDE warning
  *     }
  *
- *     @Blocking
+ *     &#064;Blocking
  *     private String blockingBuzz(String url) { ... }
  * }
- * }</pre>
+ * </code></pre>
  *
  * @see Blocking
  * @see NonBlocking
