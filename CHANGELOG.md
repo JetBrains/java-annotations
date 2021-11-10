@@ -1,6 +1,10 @@
 Changelog
 ===
 
+Version 23.0.0
+---
+* Added new annotations: `@BlockingExecutor` and `@NonBlockingExecutor`.
+
 Version 22.0.0
 ---
 * Added new annotations: `@Blocking` and `@NonBlocking`.
