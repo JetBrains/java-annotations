@@ -15,11 +15,30 @@
  */
 package org.intellij.lang.annotations;
 
+/**
+ * Specifies that the method parameter is a printf-style print format pattern,
+ * as described in {@link java.util.Formatter}.
+ * <p>
+ * Code editors that support {@link Pattern} annotation will check
+ * the syntax of this value automatically. It could also be especially recognized to
+ * check whether the subsequent var-arg arguments match the expected arguments
+ * mentioned in the pattern. E. g., consider that the following method is annotated:
+ * <pre><code>
+ * void myprintf(&#64;PrintFormat String format, Object... args) {...}
+ * </code></pre>
+ * <p>
+ * In this case, code editors might recognize that the following call is erroneous,
+ * and issue a warning:
+ * <pre><code>
+ * myprintf("%d\n", "hello"); // warning: a number expected instead of "hello"
+ * </code></pre>
+ *
+ * @see Pattern
+ */
 @Pattern(PrintFormatPattern.PRINT_FORMAT)
 public @interface PrintFormat {
 }
 
-// split up complex regex and workaround for IDEA-9173
 class PrintFormatPattern {
 
     // %[argument_index$][flags][width][.precision]conversion
