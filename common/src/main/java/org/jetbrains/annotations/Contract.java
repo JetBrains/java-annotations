@@ -51,7 +51,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * {@code @Contract("_, null -> null")} - the method returns null if its second argument is null<br>
  * {@code @Contract("_, null -> null; _, !null -> !null")} - the method returns null if its second argument is null and not-null otherwise<br>
  * {@code @Contract("true -> fail")} - a typical {@code assertFalse} method which throws an exception if {@code true} is passed to it<br>
- * {@code @Contract("_ -> this")} - the method always returns its qualifier (e.g. {@link StringBuilder#append(String)}).
+ * {@code @Contract("_ -> this")} - the method always returns its qualifier (e.g. {@link StringBuilder#append(String)}).<br>
  * {@code @Contract("null -> fail; _ -> param1")} - the method throws an exception if the first argument is null,
  * otherwise it returns the first argument (e.g. {@code Objects.requireNonNull}).<br>
  * {@code @Contract("!null, _ -> param1; null, !null -> param2; null, null -> fail")} - the method returns the first non-null argument,
