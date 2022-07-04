@@ -101,5 +101,7 @@ public @interface Contract {
    * <strong>Warning: This annotation parameter is experimental and may be changed or removed without further notice!</strong>
    * @return a mutation specifier string
    */
-  @NonNls String mutates() default "";
+  @ApiStatus.Experimental
+  @NonNls
+  String mutates() default "";
 }
