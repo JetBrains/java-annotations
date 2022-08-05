@@ -33,7 +33,7 @@ import java.lang.annotation.*;
  *   + ... + "&lt;/span&gt;&lt;/html&gt;";
  * </pre>
  * <p>
- * Here the parser assumes that when {@code font} appears in the concatenation it's value is {@code "Tahoma"},
+ * Here the parser assumes that when {@code font} appears in the concatenation its value is {@code "Tahoma"},
  * so it can continue parsing the concatenation.
  * </p>
  *
