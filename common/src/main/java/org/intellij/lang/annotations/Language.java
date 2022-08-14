@@ -42,7 +42,7 @@ import static java.lang.annotation.ElementType.*;
  * Meta-annotation works only one level deep.
  */
 @Retention(RetentionPolicy.CLASS)
-@Target({ METHOD, FIELD, PARAMETER, LOCAL_VARIABLE, ANNOTATION_TYPE })
+@Target({ METHOD, FIELD, PARAMETER, LOCAL_VARIABLE, TYPE_USE, ANNOTATION_TYPE })
 public @interface Language {
   /**
    * Language name like "JAVA", "HTML", "XML", "RegExp", etc.
