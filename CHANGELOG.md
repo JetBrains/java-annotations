@@ -1,6 +1,10 @@
 Changelog
 ===
 
+Version 24.0.0
+---
+* Added new annotation: `@IgnoreCoverage`.
+
 Version 23.0.0
 ---
 * Added new annotations: `@BlockingExecutor` and `@NonBlockingExecutor`.
