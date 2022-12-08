@@ -73,6 +73,25 @@ public final class ApiStatus {
   public @interface Internal {}
 
   /**
+   * <p>Indicates that a public API of the annotated element (class, method or field) is subject to deprecation in a future version.
+   * It's a weaker variant of {@link Deprecated} annotation.
+   * The annotated API is not supposed to be used in the new code because a better API exists,
+   * but it's permitted to postpone the migration of the existing code, therefore the usage is not considered a warning.
+   * </p>
+   */
+  @Documented
+  @Retention(RetentionPolicy.CLASS)
+  @Target({
+    ElementType.TYPE, ElementType.ANNOTATION_TYPE, ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.FIELD, ElementType.PACKAGE
+  })
+  public @interface Obsolete {
+    /**
+     * Specifies in which version the API became obsolete.
+     */
+    String since() default "";
+  }
+
+  /**
    * <p>Indicates that a public API of the annotated element (class, method or field) is subject to removal in a future version.
    * It's a stronger variant of {@link Deprecated} annotation.</p>
    *
