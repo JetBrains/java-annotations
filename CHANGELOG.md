@@ -1,6 +1,10 @@
 Changelog
 ===
 
+Version 23.1.0
+---
+* Added new annotation: `@ApiStatus.Obsolete`.
+
 Version 23.0.0
 ---
 * Added new annotations: `@BlockingExecutor` and `@NonBlockingExecutor`.
