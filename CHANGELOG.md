@@ -1,6 +1,10 @@
 Changelog
 ===
 
+Version 24.0.0
+---
+* Added new annotation: `@CheckReturnValue`.
+
 Version 23.1.0
 ---
 * Added new annotation: `@ApiStatus.Obsolete`.
