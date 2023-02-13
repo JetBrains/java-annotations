@@ -13,10 +13,19 @@ interpreted by IDEs and static analysis tools to improve code analysis.
 
 ## Using the annotations
 The annotations are published on [Maven Central](https://repo1.maven.org/maven2/org/jetbrains/annotations/). To add a dependency
-using gradle write the following in the `build.gradle` file:
+using gradle write the following in the 
+`build.gradle` file (Goovy DSL)
 ```
 dependencies {
     compileOnly 'org.jetbrains:annotations:24.0.0'
+}
+
+```
+
+or in the `build.gradle.kts` file (Kotlin DSL)
+```
+dependencies {
+    compileOnly("org.jetbrains:annotations:24.0.0")
 }
 
 ```
