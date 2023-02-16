@@ -1,5 +1,6 @@
 package org.jetbrains.annotations;
 
+import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
 
@@ -27,6 +28,7 @@ import java.lang.annotation.Target;
  *
  * @see Contract#pure()
  */
+@Documented
 @Target({ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.TYPE, ElementType.PACKAGE})
 @ApiStatus.Experimental
 public @interface CheckReturnValue {

@@ -75,6 +75,7 @@ import java.lang.annotation.*;
  *
  * The <code>@MagicConstant</code> annotation has SOURCE retention, i.e. it is removed upon compilation and does not create any runtime overhead.
  */
+@Documented
 @Retention(RetentionPolicy.SOURCE)
 @Target({
           ElementType.FIELD, ElementType.PARAMETER, ElementType.LOCAL_VARIABLE,

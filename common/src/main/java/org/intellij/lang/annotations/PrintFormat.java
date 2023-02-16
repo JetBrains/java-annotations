@@ -15,6 +15,8 @@
  */
 package org.intellij.lang.annotations;
 
+import java.lang.annotation.Documented;
+
 /**
  * Specifies that the method parameter is a printf-style print format pattern,
  * as described in {@link java.util.Formatter}.
@@ -35,6 +37,7 @@ package org.intellij.lang.annotations;
  *
  * @see Pattern
  */
+@Documented
 @Pattern(PrintFormatPattern.PRINT_FORMAT)
 public @interface PrintFormat {
 }
