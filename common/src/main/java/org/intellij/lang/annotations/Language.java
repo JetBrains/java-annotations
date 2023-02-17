@@ -18,6 +18,7 @@ package org.intellij.lang.annotations;
 
 import org.jetbrains.annotations.NonNls;
 
+import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
@@ -41,6 +42,7 @@ import static java.lang.annotation.ElementType.*;
  * Note that using the derived annotation as meta-annotation is not supported.
  * Meta-annotation works only one level deep.
  */
+@Documented
 @Retention(RetentionPolicy.CLASS)
 @Target({ METHOD, FIELD, PARAMETER, LOCAL_VARIABLE, ANNOTATION_TYPE })
 public @interface Language {
