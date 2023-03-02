@@ -1,6 +1,10 @@
 Changelog
 ===
 
+Version 24.0.1
+---
+* Added `@Documented` annotation where it would be useful.
+
 Version 24.0.0
 ---
 * Added new annotation: `@CheckReturnValue`.
