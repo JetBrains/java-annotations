@@ -1,6 +1,10 @@
 Changelog
 ===
 
+Version 24.1.0
+---
+* `@CheckReturnValue` is not experimental anymore.
+
 Version 24.0.1
 ---
 * Added `@Documented` annotation where it would be useful.

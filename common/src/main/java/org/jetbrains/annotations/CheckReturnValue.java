@@ -30,6 +30,5 @@ import java.lang.annotation.Target;
  */
 @Documented
 @Target({ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.TYPE, ElementType.PACKAGE})
-@ApiStatus.Experimental
 public @interface CheckReturnValue {
 }
