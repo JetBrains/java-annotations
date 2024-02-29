@@ -45,7 +45,7 @@ import java.lang.annotation.Target;
  */
 @Documented
 @Retention(RetentionPolicy.CLASS)
-@Target({ METHOD, FIELD, PARAMETER, LOCAL_VARIABLE, ANNOTATION_TYPE })
+@Target({ METHOD, FIELD, PARAMETER, LOCAL_VARIABLE, TYPE_USE, ANNOTATION_TYPE })
 public @interface Pattern {
     /**
      * A regular expression that matches all the valid string literals that assigned to the annotated variables,

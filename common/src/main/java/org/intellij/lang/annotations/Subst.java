@@ -41,7 +41,7 @@ import java.lang.annotation.*;
  * @see Pattern
  */
 @Retention(RetentionPolicy.CLASS)
-@Target({ElementType.METHOD, ElementType.FIELD, ElementType.LOCAL_VARIABLE, ElementType.PARAMETER})
+@Target({ElementType.METHOD, ElementType.FIELD, ElementType.LOCAL_VARIABLE, ElementType.TYPE_USE, ElementType.PARAMETER})
 public @interface Subst {
     String value();
 }

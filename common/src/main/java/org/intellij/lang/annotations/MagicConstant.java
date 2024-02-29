@@ -80,6 +80,7 @@ import java.lang.annotation.*;
 @Target({
           ElementType.FIELD, ElementType.PARAMETER, ElementType.LOCAL_VARIABLE,
           ElementType.ANNOTATION_TYPE,
+          ElementType.TYPE_USE,
           ElementType.METHOD
         })
 public @interface MagicConstant {
