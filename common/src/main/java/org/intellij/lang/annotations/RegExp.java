@@ -34,7 +34,7 @@ import java.lang.annotation.Target;
  */
 @Documented
 @Retention(RetentionPolicy.CLASS)
-@Target({METHOD, FIELD, PARAMETER, LOCAL_VARIABLE, ANNOTATION_TYPE})
+@Target({METHOD, FIELD, PARAMETER, LOCAL_VARIABLE, TYPE_USE, ANNOTATION_TYPE})
 @Language("RegExp")
 public @interface RegExp {
     /**

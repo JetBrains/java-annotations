@@ -36,7 +36,12 @@ sourceSets {
 task generateSrc(type: Copy) {
     from project(':common').sourceSets.main.java
     into generatedSourcesDir
-    filter { line -> line.replaceAll(", ElementType.TYPE_USE", "")}
+    // This filter removes
+    // 1. @Target({LOCAL_VARIABLE, TYPE_USE, ANNOTATION_TYPE}) => @Target({LOCAL_VARIABLE,  ANNOTATION_TYPE})
+    // 2. @Target({ElementType.LOCAL_VARIABLE, ElementType.TYPE_USE, ElementType.PARAMETER}) => @Target({ElementType.LOCAL_VARIABLE,  ElementType.PARAMETER})
+    // 3. @Target({ElementType.FIELD, ElementType.TYPE_USE}) => @Target({ElementType.FIELD, })
+    // 4. @Target({ElementType.TYPE_USE, ElementType.FIELD}) => @Target({ ElementType.FIELD})
+    filter { line -> line.replaceAll("\\b(ElementType.)?TYPE_USE\\b(\\w*,)?", "") }
 }
 
 compileJava {
