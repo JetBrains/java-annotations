@@ -61,14 +61,9 @@ subprojects {
     }
 }
 
-project(':java5').archivesBaseName = 'annotations-java5'
-project(':java8').archivesBaseName = 'annotations'
+project(':java-annotations').archivesBaseName = 'annotations'
 
-configure([project(':java5'), project(':java8')]) {
-    dependencies {
-        compile project(':module-info')
-    }
-    
+configure([project(':java-annotations')]) {
     task mainJar(type: Jar) {
         into ("META-INF/versions/9", {
             from (project(':module-info').sourceSets.main.output, {

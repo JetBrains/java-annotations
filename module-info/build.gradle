@@ -17,12 +17,12 @@
 sourceCompatibility = 1.9
 
 dependencies {
-    compile project(':common')
+    compile project(':java-annotations')
 }
 
 compileJava {
     // Without common sources, compiler complains that exported packages don't exist
-    source = [sourceSets.main.java, project(':common').sourceSets.main.java]
+    source = [sourceSets.main.java, project(':java-annotations').sourceSets.main.java]
 }
 
 task mainJar(type: Jar) {
