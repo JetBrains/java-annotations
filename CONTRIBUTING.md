@@ -17,13 +17,6 @@ During the new version release:
 * Use 'Draft a new release' button on the Releases GitHub page; select the added tag; copy it to the release title
  field; copy the added changelog section into the release details field.
   
-### Java 5 package
-We generate annotations-java5 package for legacy clients. This package cannot use ElementType.TYPE_USE
-which appeared in Java 8. The Java 5 package is generated from common/src sources 
-stripping the `, ElementType.TYPE_USE` substring from files.
-So no Java features that appear in Java 6 or higher except `ElementType.TYPE_USE` should be used in common/src.
-New TYPE_USE annotations should be created in java8/src. They will not appear in annotations-java5 package. 
-
 ### Backward compatibility
 All the changes should be backward compatible i.e. you can only add new annotations and new elements into existing annotation. 
 If it's absolutely necessary to remove an annotation or its element we must firstly release a new major version where 
