@@ -18,14 +18,12 @@ sourceCompatibility = 1.8
 
 mainJar {
     from sourceSets.main.output
-    from project(':common').sourceSets.main.output
 }
 
 sourceJar {
     from sourceSets.main.java
-    from project(':common').sourceSets.main.java
 }
 
 javadoc {
-    source = [sourceSets.main.java, project(':common').sourceSets.main.java]
+    source = [sourceSets.main.java]
 }

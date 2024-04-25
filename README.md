@@ -17,7 +17,7 @@ using gradle write the following in the
 `build.gradle` file (Groovy DSL)
 ```
 dependencies {
-    compileOnly 'org.jetbrains:annotations:24.1.0'
+    compileOnly 'org.jetbrains:annotations:25.0.0'
 }
 
 ```
@@ -25,7 +25,7 @@ dependencies {
 or in the `build.gradle.kts` file (Kotlin DSL)
 ```
 dependencies {
-    compileOnly("org.jetbrains:annotations:24.1.0")
+    compileOnly("org.jetbrains:annotations:25.0.0")
 }
 
 ```
@@ -34,11 +34,11 @@ To add a dependency using Maven, write the following in `pom.xml`:
 <dependency>
   <groupId>org.jetbrains</groupId>
   <artifactId>annotations</artifactId>
-  <version>24.1.0</version>
+  <version>25.0.0</version>
   <scope>provided</scope>
 </dependency>
 ```
 
-`annotations` artifact requires JDK 1.8 or higher. If your project is compiled using JDK 1.5, 1.6 or 1.7 you can use 
-the `annotations-java5` artifact instead. Please note that `annotations-java5` artifact is considered a legacy, so
- most of new annotations will appear in the `annotations` artifact only.
+`annotations` artifact requires JDK 1.8 or higher. If your project is compiled using JDK 1.5, 1.6 or 1.7 you can use
+the `annotations-java5` artifact instead. Please note that `annotations-java5` artifact is considered a legacy
+and will receive no further updates. The latest version of `annotations-java5` is 24.1.0.

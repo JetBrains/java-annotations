@@ -16,4 +16,4 @@
 
 rootProject.name = 'annotations-parent'
 
-include 'common', 'java5', 'java8', 'module-info'
+include 'java-annotations', 'module-info'
