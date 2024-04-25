@@ -17,7 +17,7 @@
 sourceCompatibility = 1.9
 
 dependencies {
-    compile project(':java-annotations')
+    implementation project(':java-annotations')
 }
 
 compileJava {
