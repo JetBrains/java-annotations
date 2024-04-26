@@ -61,50 +61,13 @@ subprojects {
     }
 }
 
-project(':java-annotations').archivesBaseName = 'annotations'
-
 configure([project(':java-annotations')]) {
-    task mainJar(type: Jar) {
-        into ("META-INF/versions/9", {
-            from (project(':module-info').sourceSets.main.output, {
-                // Skip extra files from common sources compiled with Java 9 target
-                include("module-info.class")
-            })
-        })
-        manifest.attributes("Multi-Release": true)
-        duplicatesStrategy = DuplicatesStrategy.FAIL
-    }
-
-    task sourceJar(type: Jar) {
-        into ("META-INF/versions/9", {
-            from project(':module-info').sourceSets.main.java
-        })
-        duplicatesStrategy = DuplicatesStrategy.FAIL
-        baseName = archivesBaseName + '-sources'
-    }
-
-    task javadocJar(type: Jar) {
-        duplicatesStrategy = DuplicatesStrategy.FAIL
-        from javadoc
-    }
-
-    artifacts {
-        archives mainJar, sourceJar
-    }
-
     publishing {
         publications {
             mavenJava(MavenPublication) {
                 group rootProject.group
                 version rootProject.ext.projectVersion
-                artifactId archivesBaseName
-                artifact mainJar
-                artifact sourceJar {
-                    classifier 'sources'
-                }
-                artifact javadocJar {
-                    classifier 'javadoc'
-                }
+
                 pom.withXml {
                     asNode().children().last() + {
                         resolveStrategy = DELEGATE_FIRST

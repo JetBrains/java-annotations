@@ -15,15 +15,55 @@
  */
 
 sourceCompatibility = 1.8
+project.archivesBaseName = 'annotations'
 
-mainJar {
+task mainJar(type: Jar) {
+    into ("META-INF/versions/9", {
+        from (project(':module-info').sourceSets.main.output, {
+            // Skip extra files from common sources compiled with Java 9 target
+            include("module-info.class")
+        })
+    })
+    manifest.attributes("Multi-Release": true)
     from sourceSets.main.output
+    duplicatesStrategy = DuplicatesStrategy.FAIL
 }
 
-sourceJar {
+task sourceJar(type: Jar) {
+    into ("META-INF/versions/9", {
+        from project(':module-info').sourceSets.main.java
+    })
+    duplicatesStrategy = DuplicatesStrategy.FAIL
     from sourceSets.main.java
+    baseName = archivesBaseName + '-sources'
+}
+
+task javadocJar(type: Jar) {
+    duplicatesStrategy = DuplicatesStrategy.FAIL
+    from javadoc
 }
 
 javadoc {
     source = [sourceSets.main.java]
+}
+
+artifacts {
+    archives mainJar, sourceJar
+}
+
+model {
+    publishing {
+        publications {
+            pluginMaven(MavenPublication) {
+                artifactId archivesBaseName
+                artifact mainJar
+                artifact sourceJar {
+                    classifier 'sources'
+                }
+                artifact javadocJar {
+                    classifier 'javadoc'
+                }
+            }
+        }
+    }
 }
