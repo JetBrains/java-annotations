@@ -19,7 +19,7 @@ project.archivesBaseName = 'annotations'
 
 task mainJar(type: Jar) {
     into ("META-INF/versions/9", {
-        from (project(':module-info').sourceSets.main.output, {
+        from (project(':java-module-info').sourceSets.main.output, {
             // Skip extra files from common sources compiled with Java 9 target
             include("module-info.class")
         })
@@ -31,7 +31,7 @@ task mainJar(type: Jar) {
 
 task sourceJar(type: Jar) {
     into ("META-INF/versions/9", {
-        from project(':module-info').sourceSets.main.java
+        from project(':java-module-info').sourceSets.main.java
     })
     duplicatesStrategy = DuplicatesStrategy.FAIL
     from sourceSets.main.java

@@ -78,7 +78,7 @@ kotlin {
 
 val jvmJar by tasks.getting(Jar::class) {
     into ("META-INF/versions/9") {
-        from (project(":module-info").sourceSets["main"].output) {
+        from (project(":multiplatform-module-info").sourceSets["main"].output) {
             include("module-info.class")
         }
     }
@@ -87,7 +87,7 @@ val jvmJar by tasks.getting(Jar::class) {
 
 val jvmSourcesJar by tasks.getting(Jar::class) {
     into ("META-INF/versions/9") {
-        from (project(":module-info").sourceSets["main"].output) {
+        from (project(":multiplatform-module-info").sourceSets["main"].output) {
             include("module-info.class")
         }
     }
