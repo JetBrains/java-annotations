@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-module org.jetbrains.multiplatform_annotations {
+module org.jetbrains.annotations.multiplatform {
   requires static java.desktop;
   exports org.intellij.lang.annotations;
   exports org.jetbrains.annotations;
