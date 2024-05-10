@@ -16,7 +16,13 @@ During the new version release:
 * Push changes
 * Use 'Draft a new release' button on the Releases GitHub page; select the added tag; copy it to the release title
  field; copy the added changelog section into the release details field.
-  
+
+### Multiplatform artifact
+We publish two artifacts: annotations (annotations written in Java) and multiplatform-annotations (same annotations
+written in Kotlin Multiplatform). Please check that changes are done both in java-annotations and
+multiplatform-annotations folders. Jvm artifact of multiplatform-annotations should be a drop-in replacement of
+java-annotations, every annotation added to java-annotations should also be added to multiplatform-annotations.
+
 ### Backward compatibility
 All the changes should be backward compatible i.e. you can only add new annotations and new elements into existing annotation. 
 If it's absolutely necessary to remove an annotation or its element we must firstly release a new major version where 

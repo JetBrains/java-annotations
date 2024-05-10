@@ -13,7 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package org.jetbrains.annotations
 
-rootProject.name = 'annotations-parent'
-
-include 'java-annotations', 'java-module-info', 'multiplatform-annotations', 'multiplatform-module-info'
+/**
+ * An annotation which marks a [java.util.Collection] or [java.util.Map] type
+ * as unmodifiable view. A collection or a map is unmodifiable view if any mutator methods
+ * (e.g. [java.util.Collection.add]) throw exception or have no effect.
+ * However, the content of the collection or the map may still be updated by other code.
+ *
+ * @see Unmodifiable
+ *
+ * @since 19.0.0
+ */
+@MustBeDocumented
+@Retention(AnnotationRetention.BINARY)
+@Target(AnnotationTarget.CLASS, AnnotationTarget.TYPE, AnnotationTarget.TYPE_PARAMETER)
+annotation class UnmodifiableView 

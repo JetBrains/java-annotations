@@ -14,6 +14,18 @@
  * limitations under the License.
  */
 
-rootProject.name = 'annotations-parent'
+sourceCompatibility = 1.9
 
-include 'java-annotations', 'java-module-info', 'multiplatform-annotations', 'multiplatform-module-info'
+dependencies {
+    implementation project(':java-annotations')
+}
+
+compileJava {
+    // Without common sources, compiler complains that exported packages don't exist
+    source = [sourceSets.main.java, project(':java-annotations').sourceSets.main.java]
+}
+
+task mainJar(type: Jar) {
+}
+
+javadoc.enabled = false
