@@ -70,7 +70,6 @@ kotlin {
         compilations.all {
             compilerOptions.configure {
                 freeCompilerArgs.add("-XXLanguage:-EnumEntries")
-                freeCompilerArgs.add("-Xexpect-actual-classes")
             }
         }
     }
