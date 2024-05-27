@@ -68,7 +68,6 @@ package org.jetbrains.annotations
     AnnotationTarget.LOCAL_VARIABLE,
     AnnotationTarget.CLASS,
     AnnotationTarget.TYPE,
-    AnnotationTarget.TYPE_PARAMETER,
     AnnotationTarget.FILE
 )
 annotation class NonNls
