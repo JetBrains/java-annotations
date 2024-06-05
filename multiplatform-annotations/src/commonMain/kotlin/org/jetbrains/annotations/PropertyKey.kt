@@ -28,9 +28,7 @@ package org.jetbrains.annotations
     AnnotationTarget.VALUE_PARAMETER,
     AnnotationTarget.LOCAL_VARIABLE,
     AnnotationTarget.FIELD,
-    AnnotationTarget.CLASS,
     AnnotationTarget.TYPE,
-    AnnotationTarget.TYPE_PARAMETER
 )
 annotation class PropertyKey(
     /**

@@ -29,5 +29,5 @@ package org.jetbrains.annotations
  */
 @MustBeDocumented
 @Retention(AnnotationRetention.BINARY)
-@Target(AnnotationTarget.CLASS, AnnotationTarget.TYPE, AnnotationTarget.TYPE_PARAMETER)
+@Target(AnnotationTarget.TYPE)
 annotation class Unmodifiable 
