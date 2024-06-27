@@ -79,18 +79,18 @@ kotlin {
 // from https://github.com/Kotlin/kotlinx-datetime/blob/bc8adee2b9e3659e8e1c38fc09f3a4a1bdf85276/core/build.gradle.kts
 tasks {
     val compileJavaModuleInfo by registering(JavaCompile::class) {
-        val moduleName = "org.jetbrains.annotations.multiplatform" // this module's name
+        val moduleName = "org.jetbrains.annotations" // this module's name
         val compileKotlinJvm by getting(KotlinCompile::class)
+        val compileJava by getting(JavaCompile::class)
         val sourceDir = file("src/jvmMain/moduleInfo/")
-        println("sourceDir: $sourceDir")
         val targetDir = compileKotlinJvm.destinationDirectory.map { it.dir("../moduleInfo/") }
-        println("targetDir: $targetDir")
 
         // Use a Java 11 compiler for the module info.
         javaCompiler.set(project.javaToolchains.compilerFor { languageVersion.set(JavaLanguageVersion.of(11)) })
 
-        // Always compile kotlin classes before the module descriptor.
+        // Always compile kotlin and java classes before the module descriptor.
         dependsOn(compileKotlinJvm)
+        dependsOn(compileJava)
 
         // Add the module-info source file.
         source(sourceDir)
@@ -111,7 +111,7 @@ tasks {
         options.compilerArgs.add("-Xlint:-requires-transitive-automatic")
 
         // Patch the compileKotlinJvm output classes into the compilation so exporting packages works correctly.
-        options.compilerArgs.addAll(listOf("--patch-module", "$moduleName=${compileKotlinJvm.destinationDirectory.get()}"))
+        options.compilerArgs.addAll(listOf("--patch-module", "$moduleName=${compileJava.destinationDirectory.get()}"))
 
         // Use the classpath of the compileKotlinJvm task.
         // Also ensure that the module path is used instead of classpath.
