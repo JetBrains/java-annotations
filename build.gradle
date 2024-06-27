@@ -62,7 +62,7 @@ subprojects {
     apply plugin: 'signing'
 }
 
-configure([project(':java-annotations'), project(':multiplatform-annotations')]) {
+configure([project(':multiplatform-annotations')]) {
     publishing {
         publications.withType(MavenPublication) {
             group 'org.jetbrains'

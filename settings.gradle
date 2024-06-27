@@ -16,4 +16,4 @@
 
 rootProject.name = 'annotations-parent'
 
-include 'java-annotations', 'java-module-info', 'multiplatform-annotations'
+include 'multiplatform-annotations'
