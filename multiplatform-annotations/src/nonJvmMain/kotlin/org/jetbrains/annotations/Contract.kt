@@ -68,12 +68,11 @@ package org.jetbrains.annotations
     AnnotationTarget.PROPERTY_SETTER,
     AnnotationTarget.CONSTRUCTOR
 )
-@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-expect annotation class Contract(
+actual annotation class Contract(
     /**
      * Contains the contract clauses describing causal relations between call arguments and the returned value
      */
-    @get:NonNls val value: String = "",
+    @get:NonNls actual val value: String = "",
     /**
      * Specifies that the annotated method has no visible side effects.
      * If its return value is not used, removing its invocation won't
@@ -96,7 +95,7 @@ expect annotation class Contract(
      * This annotation may be used for more precise data flow analysis, and
      * to check that the method's return value is actually used in the call place.
      */
-    val pure: Boolean = false,
+    actual val pure: Boolean = false,
     /**
      * Contains a specifier which describes which method parameters can be mutated during the method call.
      * <table>
@@ -110,5 +109,5 @@ expect annotation class Contract(
      * **Warning: This annotation parameter is experimental and may be changed or removed without further notice!**
      * @return a mutation specifier string
      */
-    @get:ApiStatus.Experimental @get:NonNls val mutates: String = ""
+    @get:ApiStatus.Experimental @get:NonNls actual val mutates: String = ""
 )

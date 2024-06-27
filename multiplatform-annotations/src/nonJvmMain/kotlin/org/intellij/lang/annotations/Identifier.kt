@@ -16,5 +16,4 @@
 package org.intellij.lang.annotations
 
 @Pattern("\\p{javaJavaIdentifierStart}\\p{javaJavaIdentifierPart}*")
-@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-expect annotation class Identifier()
+actual annotation class Identifier

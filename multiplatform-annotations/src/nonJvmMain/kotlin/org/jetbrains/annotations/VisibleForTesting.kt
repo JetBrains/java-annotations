@@ -44,5 +44,4 @@ package org.jetbrains.annotations
     AnnotationTarget.FIELD,
     AnnotationTarget.CLASS
 )
-@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-expect annotation class VisibleForTesting()
+actual annotation class VisibleForTesting

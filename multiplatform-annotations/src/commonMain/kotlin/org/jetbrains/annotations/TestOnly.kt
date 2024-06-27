@@ -38,4 +38,5 @@ package org.jetbrains.annotations
     AnnotationTarget.FIELD,
     AnnotationTarget.CLASS
 )
-annotation class TestOnly 
+@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
+expect annotation class TestOnly()

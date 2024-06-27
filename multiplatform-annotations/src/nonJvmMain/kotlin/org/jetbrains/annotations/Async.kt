@@ -21,8 +21,14 @@ package org.jetbrains.annotations
  *
  * @author egor
  */
-@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-expect class Async private constructor() {
+actual class Async private actual constructor() {
+    /**
+     * Prohibited default constructor.
+     */
+    init {
+        throw AssertionError("Async should not be instantiated")
+    }
+
     /**
      * Indicates that the marked method schedules async computation.
      * Scheduled object is either `this`, or the annotated parameter value.
@@ -35,8 +41,7 @@ expect class Async private constructor() {
         AnnotationTarget.CONSTRUCTOR,
         AnnotationTarget.VALUE_PARAMETER
     )
-    @kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-    annotation class Schedule()
+    actual annotation class Schedule
 
     /**
      * Indicates that the marked method executes async computation.
@@ -51,6 +56,5 @@ expect class Async private constructor() {
         AnnotationTarget.CONSTRUCTOR,
         AnnotationTarget.VALUE_PARAMETER
     )
-    @kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-    annotation class Execute()
+    actual annotation class Execute
 }

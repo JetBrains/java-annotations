@@ -17,22 +17,23 @@ package org.jetbrains.annotations
 
 /**
  * Indicates that the annotated executor (CoroutineContext, Scheduler)
- * allows blocking methods execution.
+ * does not allow blocking methods execution.
  *
  *
- * If a given executor does not allow blocking calls, [NonBlockingExecutor] should be used.
+ *
+ * If a given executor allows blocking calls, [BlockingExecutor] should be used.
  *
  *
  *
  * Example 1 (Kotlin coroutines):
  * <pre>`
- * class BlockingExampleService {
- * val dispatcher: @BlockingExecutor CoroutineContext
+ * class NonBlockingExampleService {
+ * val dispatcher: @NonBlockingExecutor CoroutineContext
  * get() { ... }
  *
  * suspend fun foo() {
  * val result = withContext(dispatcher) {
- * blockingBuzz() // no IDE warning
+ * blockingBuzz() // IDE warning: `Possibly blocking call in non-blocking context`
  * }
  * }
  *
@@ -44,20 +45,19 @@ package org.jetbrains.annotations
  *
  * Example 2 (Java with Reactor framework):
  * <pre>`
- * class BlockingExampleService {
- * private static final @BlockingExecutor Scheduler blockingScheduler =
- * Schedulers.newBoundedElastic(4, 10, "executor");
+ * class NonBlockingExampleService {
+ * private static final @NonBlockingExecutor Scheduler operationsScheduler =
+ * Schedulers.newParallel("parallel");
  *
  * public Flux<String> foo(Flux<String> urls) {
- * return urls.publishOn(blockingScheduler)
- * .map(url -> blockingBuzz(url));  // no IDE warning
+ * return urls.publishOn(operationsScheduler)
+ * .filter(url -> blockingBuzz(url) != null);  // IDE warning: `Possibly blocking call in non-blocking context`
  * }
  *
  * &#064;Blocking
  * private String blockingBuzz(String url) { ... }
  * }
 `</pre> *
- *
  * @see Blocking
  *
  * @see NonBlocking
@@ -65,5 +65,4 @@ package org.jetbrains.annotations
 @MustBeDocumented
 @Retention(AnnotationRetention.BINARY)
 @Target(AnnotationTarget.CLASS, AnnotationTarget.TYPE)
-@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-expect annotation class BlockingExecutor()
+actual annotation class NonBlockingExecutor

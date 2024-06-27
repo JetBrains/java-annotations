@@ -49,10 +49,8 @@ package org.jetbrains.annotations
     AnnotationTarget.TYPE,
     AnnotationTarget.FILE
 )
-@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-expect annotation class Nls(val capitalization: Capitalization = Capitalization.NotSpecified) {
-    @kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-    enum class Capitalization {
+actual annotation class Nls(actual val capitalization: Capitalization = Capitalization.NotSpecified) {
+    actual enum class Capitalization {
         NotSpecified,
 
         /**

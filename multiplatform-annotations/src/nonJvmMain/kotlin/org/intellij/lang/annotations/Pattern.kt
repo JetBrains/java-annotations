@@ -49,11 +49,10 @@ import org.jetbrains.annotations.NonNls
     AnnotationTarget.LOCAL_VARIABLE,
     AnnotationTarget.ANNOTATION_CLASS
 )
-@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-expect annotation class Pattern(
+actual annotation class Pattern(
     /**
      * A regular expression that matches all the valid string literals that assigned to the annotated variables,
      * passed as arguments to the annotated parameters, or returned from the annotated methods.
      */
-    @get:Language("RegExp") @get:NonNls val value: String
+    @get:Language("RegExp") @get:NonNls actual val value: String
 )

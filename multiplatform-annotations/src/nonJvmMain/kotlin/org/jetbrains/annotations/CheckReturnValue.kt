@@ -38,5 +38,4 @@ package org.jetbrains.annotations
     AnnotationTarget.CLASS,
     AnnotationTarget.FILE
 )
-@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-expect annotation class CheckReturnValue()
+actual annotation class CheckReturnValue

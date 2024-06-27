@@ -16,19 +16,16 @@
 package org.jetbrains.annotations
 
 /**
- * An annotation which marks a [java.util.Collection] or [java.util.Map] type
- * as unmodifiable. A collection or a map is unmodifiable if any mutator methods
- * (e.g. [java.util.Collection.add]) throw exception or have no effect,
- * and the object references stored as collection elements, map keys, and map values
- * are never changed. The referenced objects themselves still could be changed if they
- * are mutable.
+ * The annotation should be applied to overridable non-abstract method
+ * and indicates that all the overriders must invoke this method via
+ * superclass method invocation expression. The static analysis tools
+ * may report a warning if overrider fails to invoke this method.
  *
- * @see UnmodifiableView
- *
- * @since 19.0.0
+ * @since 20.0.0
  */
 @MustBeDocumented
-@Retention(AnnotationRetention.BINARY)
-@Target(AnnotationTarget.TYPE)
-@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-expect annotation class Unmodifiable()
+@Target(AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER)
+@Retention(
+    AnnotationRetention.BINARY
+)
+actual annotation class MustBeInvokedByOverriders

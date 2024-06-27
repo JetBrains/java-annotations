@@ -38,14 +38,13 @@ import org.jetbrains.annotations.NonNls
     AnnotationTarget.ANNOTATION_CLASS
 )
 @Language("RegExp")
-@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-expect annotation class RegExp(
+actual annotation class RegExp(
     /**
      * A constant prefix that is assumed to be implicitly added before the regular expression.
      */
-    @get:NonNls val prefix: String = "",
+    @get:NonNls actual val prefix: String = "",
     /**
      * A constant suffix that is assumed to be implicitly added after the regular expression.
      */
-    @get:NonNls val suffix: String = ""
+    @get:NonNls actual val suffix: String = ""
 )

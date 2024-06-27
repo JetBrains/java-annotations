@@ -20,15 +20,20 @@ import org.intellij.lang.annotations.Language
 /**
  * @since 18.0.0
  */
-@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-expect class Debug private constructor() {
+actual class Debug private actual constructor() {
+    /**
+     * Prohibited default constructor.
+     */
+    init {
+        throw AssertionError("Debug should not be instantiated")
+    }
+
     /**
      * Allows to change the presentation of an object in debuggers
      */
     @Target(AnnotationTarget.CLASS)
     @Retention(AnnotationRetention.BINARY)
-    @kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-    annotation class Renderer(
+    actual annotation class Renderer(
         /**
          * Expression to be evaluated and used as the textual representation of the object.<br></br>
          * `this` refers to the class instance being presented
@@ -37,7 +42,7 @@ expect class Debug private constructor() {
             value = "JAVA",
             prefix = "class Renderer{String \$text(){return ",
             suffix = ";}}"
-        ) @get:NonNls val text: String = "",
+        ) @get:NonNls actual val text: String = "",
         /**
          * Expression to be evaluated to obtain an array of object's children.<br></br>
          * Usually the result is an array of elements in a collection, or an array of entries in a map.<br></br>
@@ -47,7 +52,7 @@ expect class Debug private constructor() {
             value = "JAVA",
             prefix = "class Renderer{Object[] \$childrenArray(){return ",
             suffix = ";}}"
-        ) @get:NonNls val childrenArray: String = "",
+        ) @get:NonNls actual val childrenArray: String = "",
         /**
          * Expression to be evaluated to check if the object has any children at all.<br></br>
          * This should work faster than [.childrenArray] and return boolean.<br></br>
@@ -57,6 +62,6 @@ expect class Debug private constructor() {
             value = "JAVA",
             prefix = "class Renderer{boolean \$hasChildren(){return ",
             suffix = ";}}"
-        ) @get:NonNls val hasChildren: String = ""
+        ) @get:NonNls actual val hasChildren: String = ""
     )
 }

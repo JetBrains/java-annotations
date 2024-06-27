@@ -20,8 +20,14 @@ package org.jetbrains.annotations
  *
  * @since 18.0.0
  */
-@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-expect class ApiStatus private constructor() {
+actual class ApiStatus private actual constructor() {
+    /**
+     * Prohibited default constructor.
+     */
+    init {
+        throw AssertionError("ApiStatus should not be instantiated")
+    }
+
     /**
      *
      * Indicates that a public API of the annotated element (class, method or field) is not in stable state yet. It may be renamed, changed or
@@ -54,8 +60,7 @@ expect class ApiStatus private constructor() {
         AnnotationTarget.FIELD,
         AnnotationTarget.FILE
     )
-    @kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-    annotation class Experimental()
+    actual annotation class Experimental
 
     /**
      * Indicates that the annotated element (class, method, field, etc) must not be considered as a public API. It's made visible to allow
@@ -84,8 +89,7 @@ expect class ApiStatus private constructor() {
         AnnotationTarget.FIELD,
         AnnotationTarget.FILE
     )
-    @kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-    annotation class Internal()
+    actual annotation class Internal
 
     /**
      *
@@ -107,12 +111,11 @@ expect class ApiStatus private constructor() {
         AnnotationTarget.FIELD,
         AnnotationTarget.FILE
     )
-    @kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-    annotation class Obsolete(
+    actual annotation class Obsolete(
         /**
          * Specifies in which version the API became obsolete.
          */
-        val since: String = ""
+        actual val since: String = ""
     )
 
     /**
@@ -136,12 +139,11 @@ expect class ApiStatus private constructor() {
         AnnotationTarget.FIELD,
         AnnotationTarget.FILE
     )
-    @kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-    annotation class ScheduledForRemoval(
+    actual annotation class ScheduledForRemoval(
         /**
          * Specifies in which version the API will be removed.
          */
-        val inVersion: String = ""
+        actual val inVersion: String = ""
     )
 
     /**
@@ -163,12 +165,11 @@ expect class ApiStatus private constructor() {
         AnnotationTarget.FIELD,
         AnnotationTarget.FILE
     )
-    @kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-    annotation class AvailableSince(
+    actual annotation class AvailableSince(
         /**
          * Specifies a version where the annotation API firstly appeared.
          */
-        val value: String
+        actual val value: String
     )
 
     /**
@@ -193,8 +194,7 @@ expect class ApiStatus private constructor() {
         AnnotationTarget.PROPERTY_GETTER,
         AnnotationTarget.PROPERTY_SETTER
     )
-    @kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-    annotation class NonExtendable()
+    actual annotation class NonExtendable
 
     /**
      *
@@ -219,6 +219,5 @@ expect class ApiStatus private constructor() {
         AnnotationTarget.PROPERTY_GETTER,
         AnnotationTarget.PROPERTY_SETTER
     )
-    @kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-    annotation class OverrideOnly()
+    actual annotation class OverrideOnly
 }

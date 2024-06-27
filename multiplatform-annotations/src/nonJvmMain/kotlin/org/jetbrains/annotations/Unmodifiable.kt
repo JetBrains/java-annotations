@@ -30,5 +30,4 @@ package org.jetbrains.annotations
 @MustBeDocumented
 @Retention(AnnotationRetention.BINARY)
 @Target(AnnotationTarget.TYPE)
-@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-expect annotation class Unmodifiable()
+actual annotation class Unmodifiable

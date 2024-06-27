@@ -16,26 +16,27 @@
 package org.jetbrains.annotations
 
 /**
- * Indicates that the annotated method is inherently blocking and should not be executed in a non-blocking context.
+ * An annotation which allows to specify for integral type (byte, char, short, int, long) an allowed values range.
+ * Applying this annotation to other types is not correct.
  *
  *
- * When this annotation is used on a `class`, all the methods declared by the annotated class are considered
- * *blocking*.
+ * Example:
+ * <pre>`public @Range(from = 0, to = Integer.MAX_VALUE) int length() {
+ * return this.length; // returns a non-negative integer
+ * }`</pre>
  *
- *
- * Apart from documentation purposes this annotation is intended to be used by static analysis tools to validate against
- * probable runtime errors and element contract violations.
- *
- * @since 22.0.0
+ * @since 17.0.0
  */
 @MustBeDocumented
 @Retention(AnnotationRetention.BINARY)
-@Target(
-    AnnotationTarget.FUNCTION,
-    AnnotationTarget.PROPERTY_GETTER,
-    AnnotationTarget.PROPERTY_SETTER,
-    AnnotationTarget.CONSTRUCTOR,
-    AnnotationTarget.CLASS
+@Target(AnnotationTarget.TYPE)
+actual annotation class Range(
+    /**
+     * @return minimal allowed value (inclusive)
+     */
+    actual val from: Long,
+    /**
+     * @return maximal allowed value (inclusive)
+     */
+    actual val to: Long
 )
-@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-expect annotation class Blocking()

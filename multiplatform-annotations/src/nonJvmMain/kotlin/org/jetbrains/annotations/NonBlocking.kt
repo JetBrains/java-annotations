@@ -16,15 +16,15 @@
 package org.jetbrains.annotations
 
 /**
- * Indicates that the annotated method is inherently blocking and should not be executed in a non-blocking context.
+ * Indicates that the annotated method is inherently non-blocking and can be executed in a non-blocking context.
  *
  *
  * When this annotation is used on a `class`, all the methods declared by the annotated class are considered
- * *blocking*.
+ * *non-blocking*.
  *
  *
  * Apart from documentation purposes this annotation is intended to be used by static analysis tools to validate against
- * probable runtime errors and element contract violations.
+ * probable runtime errors and contract violations.
  *
  * @since 22.0.0
  */
@@ -37,5 +37,4 @@ package org.jetbrains.annotations
     AnnotationTarget.CONSTRUCTOR,
     AnnotationTarget.CLASS
 )
-@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-expect annotation class Blocking()
+actual annotation class NonBlocking

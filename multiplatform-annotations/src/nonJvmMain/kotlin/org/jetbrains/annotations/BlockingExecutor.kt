@@ -65,5 +65,4 @@ package org.jetbrains.annotations
 @MustBeDocumented
 @Retention(AnnotationRetention.BINARY)
 @Target(AnnotationTarget.CLASS, AnnotationTarget.TYPE)
-@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-expect annotation class BlockingExecutor()
+actual annotation class BlockingExecutor

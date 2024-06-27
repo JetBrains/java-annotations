@@ -37,5 +37,4 @@ package org.jetbrains.annotations
     AnnotationTarget.CONSTRUCTOR,
     AnnotationTarget.CLASS
 )
-@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-expect annotation class Blocking()
+actual annotation class Blocking

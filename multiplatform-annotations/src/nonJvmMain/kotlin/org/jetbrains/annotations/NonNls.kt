@@ -70,5 +70,4 @@ package org.jetbrains.annotations
     AnnotationTarget.TYPE,
     AnnotationTarget.FILE
 )
-@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-expect annotation class NonNls()
+actual annotation class NonNls

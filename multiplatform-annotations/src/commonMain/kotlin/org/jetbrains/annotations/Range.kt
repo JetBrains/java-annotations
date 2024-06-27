@@ -30,7 +30,8 @@ package org.jetbrains.annotations
 @MustBeDocumented
 @Retention(AnnotationRetention.BINARY)
 @Target(AnnotationTarget.TYPE)
-annotation class Range(
+@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
+expect annotation class Range(
     /**
      * @return minimal allowed value (inclusive)
      */

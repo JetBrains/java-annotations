@@ -30,13 +30,12 @@ package org.jetbrains.annotations
     AnnotationTarget.FIELD,
     AnnotationTarget.TYPE,
 )
-@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-expect annotation class PropertyKey(
+actual annotation class PropertyKey(
     /**
      * The full-qualified name of the resource bundle in which the property keys must
      * be present. Consists of a full-qualified name of the package corresponding to the
      * directory where the resource bundle is located and the base name of the resource
      * bundle (with no locale specifier or extension), separated with a dot.
      */
-    @get:NonNls val resourceBundle: String
+    @get:NonNls actual val resourceBundle: String
 )

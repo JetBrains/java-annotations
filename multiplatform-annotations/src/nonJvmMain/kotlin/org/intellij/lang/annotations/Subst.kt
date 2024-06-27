@@ -49,5 +49,4 @@ package org.intellij.lang.annotations
     AnnotationTarget.LOCAL_VARIABLE,
     AnnotationTarget.VALUE_PARAMETER
 )
-@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-expect annotation class Subst(val value: String)
+actual annotation class Subst(actual val value: String)

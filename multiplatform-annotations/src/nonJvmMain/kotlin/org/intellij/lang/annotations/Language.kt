@@ -47,8 +47,7 @@ import org.jetbrains.annotations.NonNls
     AnnotationTarget.LOCAL_VARIABLE,
     AnnotationTarget.ANNOTATION_CLASS
 )
-@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-expect annotation class Language(
+actual annotation class Language(
     /**
      * Language name like "JAVA", "HTML", "XML", "RegExp", etc.
      * The complete list of supported languages is not specified. However, at least the following languages should be
@@ -60,16 +59,16 @@ expect annotation class Language(
      *  * "RegExp" - Regular expression supported by Java [java.util.regex.Pattern]
      *
      */
-    @get:NonNls val value: String,
+    @get:NonNls actual val value: String,
     /**
      * A constant prefix that is assumed to be implicitly added before the literal.
      * This helps to apply proper highlighting when the program element represents only a part of the valid program.
      * E.g. if the method parameter accepts a Java method, it could be annotated as
      * `void methodProcessor(@Language(value="JAVA", prefix="class X {", suffix="}")`.
      */
-    @get:NonNls val prefix: String = "",
+    @get:NonNls actual val prefix: String = "",
     /**
      * A constant suffix that is assumed to be implicitly added after the literal. See [.prefix] for details.
      */
-    @get:NonNls val suffix: String = ""
+    @get:NonNls actual val suffix: String = ""
 )

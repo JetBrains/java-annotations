@@ -28,4 +28,5 @@ package org.jetbrains.annotations
 @Retention(
     AnnotationRetention.BINARY
 )
-annotation class MustBeInvokedByOverriders
+@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
+expect annotation class MustBeInvokedByOverriders()

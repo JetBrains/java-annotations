@@ -16,17 +16,17 @@
 package org.jetbrains.annotations
 
 /**
- * Indicates that the annotated method is inherently blocking and should not be executed in a non-blocking context.
+ * A member or type annotated with TestOnly claims that it should be used from testing code only.
  *
  *
- * When this annotation is used on a `class`, all the methods declared by the annotated class are considered
- * *blocking*.
+ * Apart from documentation purposes this annotation is intended to be used by static analysis tools
+ * to validate against element contract violations.
  *
  *
- * Apart from documentation purposes this annotation is intended to be used by static analysis tools to validate against
- * probable runtime errors and element contract violations.
- *
- * @since 22.0.0
+ * This annotation means that the annotated element exposes internal data and breaks encapsulation
+ * of the containing class; the annotation won't prevent its use from production code, developers
+ * even won't see warnings if their IDE doesn't support the annotation. It's better to provide
+ * proper API which can be used in production as well as in tests.
  */
 @MustBeDocumented
 @Retention(AnnotationRetention.BINARY)
@@ -35,7 +35,7 @@ package org.jetbrains.annotations
     AnnotationTarget.PROPERTY_GETTER,
     AnnotationTarget.PROPERTY_SETTER,
     AnnotationTarget.CONSTRUCTOR,
+    AnnotationTarget.FIELD,
     AnnotationTarget.CLASS
 )
-@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
-expect annotation class Blocking()
+actual annotation class TestOnly

@@ -37,4 +37,5 @@ package org.jetbrains.annotations
     AnnotationTarget.CONSTRUCTOR,
     AnnotationTarget.CLASS
 )
-annotation class NonBlocking
+@kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
+expect annotation class NonBlocking()

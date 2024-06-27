@@ -1,4 +1,5 @@
 import org.gradle.jvm.tasks.Jar
+import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -60,17 +61,21 @@ kotlin {
                 compileOnly("org.jetbrains.kotlin:kotlin-stdlib")
             }
         }
+
+        val nonJvmMain by creating {}
     }
 
-    /**
-     * @Nls contains enum class. Kotlin automatically generates
-     * `.entries` method for every enum and adds @NotNull to it.
-     * This disables `.entries` generation.
-     */
+    targets.onEach {
+        if (it.platformType != KotlinPlatformType.jvm) {
+            it.compilations.getByName("main").source(sourceSets.getByName("nonJvmMain"))
+        }
+    }
+
     targets.all {
         compilations.all {
             compilerOptions.configure {
-                freeCompilerArgs.add("-XXLanguage:-EnumEntries")
+                optIn.add("kotlin.ExperimentalMultiplatform")
+                freeCompilerArgs.add("-Xexpect-actual-classes")
             }
         }
     }
