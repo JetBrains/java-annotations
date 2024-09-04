@@ -2,6 +2,7 @@ import jetbrains.sign.GpgSignSignatoryProvider
 import org.gradle.jvm.tasks.Jar
 import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import plugins.publishing.*
 
 /*
  * Copyright 2000-2021 JetBrains s.r.o.
@@ -37,6 +38,7 @@ plugins {
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
     `maven-publish`
     signing
+    java
 }
 
 var projectVersion = project.findProperty("projectVersion") as String
@@ -180,6 +182,15 @@ tasks {
             into("META-INF/versions/9/")
         }
     }
+
+    val allMetadataJar by existing(Jar::class) {
+        archiveClassifier.set("all")
+    }
+
+    val javadocJar by creating(Jar::class) {
+        from(javadoc)
+        archiveClassifier.set("javadoc")
+    }
 }
 
 nexusPublishing {
@@ -192,33 +203,69 @@ nexusPublishing {
 }
 
 publishing {
-    publications.withType(MavenPublication::class) {
-        group = "org.jetbrains"
-        version = rootProject.version as String
+    val artifactBaseName = base.archivesName.get()
+    configureMultiModuleMavenPublishing {
+        val rootModule = module("rootModule") {
+            mavenPublication {
+                artifactId = artifactBaseName
+                groupId = "org.jetbrains"
+                configureKotlinPomAttributes(packaging = "jar")
+                artifact(tasks.getByName("javadocJar"))
+            }
+            variant("metadataApiElements") { suppressPomMetadataWarnings() }
+            variant("jvmApiElements")
+            variant("jvmRuntimeElements") {
+                configureVariantDetails { mapToMavenScope("runtime") }
+            }
+            variant("jvmSourcesElements")
+        }
+        val targetModules = kotlin.targets.filter { it.targetName != "jvm" && it.targetName != "metadata" }.map { target ->
+            val targetName = target.targetName
+            module("${targetName}Module") {
+                mavenPublication {
+                    artifactId = "$artifactBaseName-$targetName"
+                    groupId = "org.jetbrains"
+                    configureKotlinPomAttributes(packaging = "klib")
+                }
+                variant("${targetName}ApiElements")
+                if (configurations.findByName("${targetName}RuntimeElements") != null) {
+                    variant("${targetName}RuntimeElements")
+                }
+                variant("${targetName}SourcesElements")
+            }
+        }
 
-        pom {
-            name.set("JetBrains Java Annotations")
-            description.set("A set of annotations used for code inspection support and code documentation.")
+        // Makes all variants from accompanying artifacts visible through `available-at`
+        rootModule.include(*targetModules.toTypedArray())
+    }
+}
+
+fun MavenPublication.configureKotlinPomAttributes(
+    packaging: String,
+) {
+    pom {
+        this.packaging = packaging
+        name.set("JetBrains Java Annotations")
+        description.set("A set of annotations used for code inspection support and code documentation.")
+        url.set("https://github.com/JetBrains/java-annotations")
+        scm {
             url.set("https://github.com/JetBrains/java-annotations")
-            scm {
-                url.set("https://github.com/JetBrains/java-annotations")
-                connection.set("scm:git:git://github.com/JetBrains/java-annotations.git")
-                developerConnection.set("scm:git:ssh://github.com:JetBrains/java-annotations.git")
+            connection.set("scm:git:git://github.com/JetBrains/java-annotations.git")
+            developerConnection.set("scm:git:ssh://github.com:JetBrains/java-annotations.git")
+        }
+        licenses {
+            license {
+                name.set("The Apache Software License, Version 2.0")
+                url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+                distribution.set("repo")
             }
-            licenses {
-                license {
-                    name.set("The Apache Software License, Version 2.0")
-                    url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
-                    distribution.set("repo")
-                }
-            }
-            developers {
-                developer {
-                    id.set("JetBrains")
-                    name.set("JetBrains Team")
-                    organization.set("JetBrains")
-                    organizationUrl.set("https://www.jetbrains.com")
-                }
+        }
+        developers {
+            developer {
+                id.set("JetBrains")
+                name.set("JetBrains Team")
+                organization.set("JetBrains")
+                organizationUrl.set("https://www.jetbrains.com")
             }
         }
     }
