@@ -184,7 +184,7 @@ tasks {
     }
 
     val allMetadataJar by existing(Jar::class) {
-        archiveClassifier.set("all")
+        archiveClassifier.set("common")
     }
 
     val javadocJar by creating(Jar::class) {
@@ -202,6 +202,21 @@ nexusPublishing {
     }
 }
 
+configurations {
+    create("javadocElements") {
+        attributes {
+            attribute(Category.CATEGORY_ATTRIBUTE, project.objects.named(Category::class.java, Category.DOCUMENTATION))
+            attribute(Bundling.BUNDLING_ATTRIBUTE, project.objects.named(Bundling::class.java, Bundling.EXTERNAL))
+            attribute(DocsType.DOCS_TYPE_ATTRIBUTE, project.objects.named(DocsType::class.java, DocsType.JAVADOC))
+            attribute(Usage.USAGE_ATTRIBUTE, project.objects.named(Usage::class.java, Usage.JAVA_RUNTIME))
+        }
+    }
+}
+
+artifacts {
+    add("javadocElements", tasks.getByName("javadocJar"))
+}
+
 publishing {
     val artifactBaseName = base.archivesName.get()
     configureMultiModuleMavenPublishing {
@@ -210,14 +225,27 @@ publishing {
                 artifactId = artifactBaseName
                 groupId = "org.jetbrains"
                 configureKotlinPomAttributes(packaging = "jar")
-                artifact(tasks.getByName("javadocJar"))
             }
             variant("metadataApiElements") { suppressPomMetadataWarnings() }
+            variant("metadataSourcesElementsFromJvm") {
+                name = "metadataSourcesElements"
+                configuration {
+                    // to avoid clash in Gradle 8+ with metadataSourcesElements configuration with the same attributes
+                    isCanBeConsumed = false
+                }
+                attributes {
+                    copyAttributes(from = project.configurations["metadataSourcesElements"].attributes, to = this)
+                }
+                artifact(tasks["sourcesJar"]) {
+                    classifier = "sources-common"
+                }
+            }
             variant("jvmApiElements")
             variant("jvmRuntimeElements") {
                 configureVariantDetails { mapToMavenScope("runtime") }
             }
             variant("jvmSourcesElements")
+            variant("javadocElements")
         }
         val targetModules = kotlin.targets.filter { it.targetName != "jvm" && it.targetName != "metadata" }.map { target ->
             val targetName = target.targetName
