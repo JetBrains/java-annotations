@@ -13,5 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package org.jetbrains.annotations
 
-rootProject.name = 'annotations'
+/**
+ * The annotation should be applied to overridable non-abstract method
+ * and indicates that all the overriders must invoke this method via
+ * superclass method invocation expression. The static analysis tools
+ * may report a warning if overrider fails to invoke this method.
+ *
+ * @since 20.0.0
+ */
+@MustBeDocumented
+@Target(AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER)
+@Retention(
+    AnnotationRetention.BINARY
+)
+actual annotation class MustBeInvokedByOverriders

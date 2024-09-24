@@ -13,5 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package org.intellij.lang.annotations
 
-rootProject.name = 'annotations'
+@Pattern("\\p{javaJavaIdentifierStart}\\p{javaJavaIdentifierPart}*")
+actual annotation class Identifier
