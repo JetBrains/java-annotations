@@ -303,3 +303,7 @@ signing {
     sign(publishing.publications)
     signatories = GpgSignSignatoryProvider()
 }
+
+tasks.register("signAll") {
+    dependsOn(tasks.withType<Sign>())
+}
