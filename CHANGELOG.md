@@ -1,11 +1,14 @@
 Changelog
 ===
 
+Version 26.0.0
+---
+* Added new experimental annotation: `@NotNullByDefault`
+
 Version 25.0.0
 ---
 * Added Kotlin Multiplatform artifact (multiplatform-annotations).
 * Removed Java 5 artifact.
-* Added new annotation: `@NotNullByDefault`
 
 Version 24.1.0
 ---

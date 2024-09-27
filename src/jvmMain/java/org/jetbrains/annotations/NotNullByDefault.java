@@ -27,5 +27,6 @@ import java.lang.annotation.*;
 @Documented
 @Retention(RetentionPolicy.CLASS)
 @Target({ElementType.TYPE, ElementType.PACKAGE})
+@ApiStatus.Experimental
 public @interface NotNullByDefault {
 }
