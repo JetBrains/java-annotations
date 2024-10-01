@@ -27,6 +27,7 @@ import java.lang.annotation.Target;
  * When used on a package, the annotation applies to all types of that package.
  *
  * @see Contract#pure()
+ * @since 24.0.0
  */
 @Documented
 @Target({ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.TYPE, ElementType.PACKAGE})
