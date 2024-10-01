@@ -23,7 +23,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * An element annotated with {@link UnknownNullability} claims that no specific nullability
+ * An element annotated with {@code UnknownNullability} claims that no specific nullability
  * should be assumed by static analyzer. The unconditional dereference of the annotated value
  * should not trigger a static analysis warning by default (though static analysis tool may have
  * an option to perform stricter analysis and issue warnings for {@code @UnknownNullability} as well).
@@ -34,7 +34,9 @@ import java.lang.annotation.Target;
  * The {@code UnknownNullability} is the default nullability for unannotated methods, so it's
  * rarely necessary. An explicit annotation may serve to document the method behavior and also
  * to override automatic annotation inference result that could be implemented in some static
- * analysis tools.
+ * analysis tools. Finally, it can override the effect of {@link NotNullByDefault}.
+ *
+ * @since 21.0.0
  */
 @Documented
 @Retention(RetentionPolicy.CLASS)
