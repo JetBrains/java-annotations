@@ -107,8 +107,7 @@ expect annotation class Contract(
      * <tr><td>"this,param1"</td><td>Method mutates the receiver and first argument and doesn't mutate any other arguments</td></tr>
     </table> *
      *
-     * **Warning: This annotation parameter is experimental and may be changed or removed without further notice!**
      * @return a mutation specifier string
      */
-    @get:ApiStatus.Experimental @get:NonNls val mutates: String = ""
+    @get:NonNls val mutates: String = ""
 )

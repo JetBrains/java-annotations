@@ -92,16 +92,17 @@ public @interface Contract {
    * Contains a specifier which describes which method parameters can be mutated during the method call.
    * <table>
    *   <caption>Possible values:</caption>
-   *   <tr><td>"this"</td><td>Method mutates the receiver object, and doesn't mutates any objects passed as arguments (cannot be applied for static method or constructor)</td></tr>
-   *   <tr><td>"param"</td><td>Method mutates the sole argument and doesn't mutate the receiver object (if applicable)</td></tr>
+   *   <tr><td>"this"</td><td>Method mutates the receiver object, and doesn't mutate any objects passed as arguments (cannot be applied for static method or constructor)</td></tr>
+   *   <tr><td>"param"</td><td>Method mutates the sole argument and doesn't mutate the receiver object (if applicable) or anything else</td></tr>
    *   <tr><td>"param1", "param2", ...</td><td>Method mutates the N-th argument</td></tr>
-   *   <tr><td>"this,param1"</td><td>Method mutates the receiver and first argument and doesn't mutate any other arguments</td></tr>
+   *   <tr><td>"io"</td><td>Method performs input/output changing the outer world but does not mutate any observable program state</td></tr>
+   *   <tr><td>"this,param1"</td><td>Method mutates the receiver and first argument and doesn't mutate any other arguments or observable program state</td></tr>
+   *   <tr><td>"io,this"</td><td>Method performs input/output changing the outer world and mutates the receiver, but doesn't mutate any arguments or observable program state</td></tr>
    * </table>
    *
    * <strong>Warning: This annotation parameter is experimental and may be changed or removed without further notice!</strong>
    * @return a mutation specifier string
    */
-  @ApiStatus.Experimental
   @NonNls
   String mutates() default "";
 }
