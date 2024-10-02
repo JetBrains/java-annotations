@@ -37,7 +37,7 @@ import java.lang.annotation.*;
  * <p>
  * If a method overrides a superclass method, and the superclass method specifies the nullability on parameter
  * or return type, then the subclass method should specify the same nullability, either directly or indirectly
- * via {@link @NotNullByDefault}. The only exception is the covariant return type nullability: if the superclass
+ * via {@link NotNullByDefault}. The only exception is the covariant return type nullability: if the superclass
  * method is declared to return nullable value, then subclass may declare to return a not-null value.
  * <p>
  * The tools may issue a warning if the nullability for a subclass method contradicts from the specified nullability
