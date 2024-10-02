@@ -21,8 +21,21 @@ import java.lang.annotation.*;
  * The tools may issue a warning if the nullability for a subclass method contradicts from the specified nullability
  * of a superclass method.
  * <p>
- * The annotation has no effect on newly declared type parameters and their bounds. Only instantiations of
- * type parameters are constrained.
+ * For newly declared type parameters, the annotation applies to its bounds, including implicit {@code Object}
+ * bound if no explicit bound is declared. For example, {@code <T>} declared under {@code @NotNullByDefault} scope
+ * means the same as {@code <T extends @NotNull Object>}. To reset to default behavior in this case, one should use
+ * {@code <T extends @UnknownNullability Object>}.
+ * <p>
+ * The type parameter references are not affected by {@code @NotNullByDefault}. For example:
+ * <pre>{@code
+ * @NotNullByDefault
+ * interface Pair<K extends @Nullable Object, V> {
+ *   // Not assumed to be @NotNull; may return null depending on the T instantiation
+ *   K getKey();
+ *   // Returns @NotNull, as implicit upper bound of V is @NotNull Object,
+ *   // so it cannot be instantiated with a nullable type
+ *   V getValue();
+ * }}</pre>
  * <p>
  * The annotation has no effect on local variables.
  *
