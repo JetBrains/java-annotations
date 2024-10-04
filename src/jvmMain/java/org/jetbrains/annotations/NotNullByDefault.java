@@ -30,7 +30,7 @@ import java.lang.annotation.*;
  * <pre>{@code
  * @NotNullByDefault
  * interface Pair<K extends @Nullable Object, V> {
- *   // Not assumed to be @NotNull; may return null depending on the T instantiation
+ *   // Not assumed to be @NotNull; may return null depending on the K instantiation
  *   K getKey();
  *   // Returns @NotNull, as implicit upper bound of V is @NotNull Object,
  *   // so it cannot be instantiated with a nullable type
