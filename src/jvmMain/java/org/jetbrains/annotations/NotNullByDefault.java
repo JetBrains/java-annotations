@@ -27,15 +27,14 @@ import java.lang.annotation.*;
  * {@code <T extends @UnknownNullability Object>}.
  * <p>
  * The type parameter references are not affected by {@code @NotNullByDefault}. For example:
- * <pre>{@code
- * @NotNullByDefault
+ * <pre>{@code @NotNullByDefault
  * interface Pair<K extends @Nullable Object, V> {
  *   // Not assumed to be @NotNull; may return null depending on the K instantiation
  *   K getKey();
  *   // Returns @NotNull, as implicit upper bound of V is @NotNull Object,
  *   // so it cannot be instantiated with a nullable type
  *   V getValue();
- * }}</pre>
+ * } }</pre>
  * <p>
  * The annotation has no effect on local variables.
  *

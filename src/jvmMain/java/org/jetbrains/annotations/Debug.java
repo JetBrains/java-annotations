@@ -35,7 +35,7 @@ public final class Debug {
   }
 
   /**
-   * Allows to change the presentation of an object in debuggers
+   * Allows changing the presentation of an object in debuggers
    */
   @Target(ElementType.TYPE)
   @Retention(RetentionPolicy.CLASS)
