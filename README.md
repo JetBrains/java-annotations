@@ -17,7 +17,7 @@ using gradle write the following in the
 `build.gradle` file (Groovy DSL)
 ```
 dependencies {
-    compileOnly 'org.jetbrains:annotations:25.0.0'
+    compileOnly 'org.jetbrains:annotations:26.0.0'
 }
 
 ```
@@ -25,7 +25,7 @@ dependencies {
 or in the `build.gradle.kts` file (Kotlin DSL)
 ```
 dependencies {
-    compileOnly("org.jetbrains:annotations:25.0.0")
+    compileOnly("org.jetbrains:annotations:26.0.0")
 }
 
 ```
@@ -34,7 +34,7 @@ To add a dependency using Maven, write the following in `pom.xml`:
 <dependency>
   <groupId>org.jetbrains</groupId>
   <artifactId>annotations</artifactId>
-  <version>25.0.0</version>
+  <version>26.0.0</version>
   <scope>provided</scope>
 </dependency>
 ```
