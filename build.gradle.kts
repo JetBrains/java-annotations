@@ -183,6 +183,13 @@ tasks {
         }
     }
 
+    val javaOnlySourcesJar by creating(Jar::class) {
+        from(kotlin.sourceSets["jvmMain"].kotlin) {
+            into(".")
+        }
+        archiveClassifier.set("sources")
+    }
+
     val allMetadataJar by existing(Jar::class) {
         archiveClassifier.set("common")
     }
@@ -203,6 +210,10 @@ nexusPublishing {
 }
 
 configurations {
+    create("javaOnlySourcesElements") {
+        copyAttributes(configurations.findByName("jvmSourcesElements")!!.attributes, attributes)
+    }
+
     create("javadocElements") {
         attributes {
             attribute(Category.CATEGORY_ATTRIBUTE, project.objects.named(Category::class.java, Category.DOCUMENTATION))
@@ -214,6 +225,7 @@ configurations {
 }
 
 artifacts {
+    add("javaOnlySourcesElements", tasks.getByName("javaOnlySourcesJar"))
     add("javadocElements", tasks.getByName("javadocJar"))
 }
 
@@ -244,7 +256,7 @@ publishing {
             variant("jvmRuntimeElements") {
                 configureVariantDetails { mapToMavenScope("runtime") }
             }
-            variant("jvmSourcesElements")
+            variant("javaOnlySourcesElements")
             variant("javadocElements")
         }
         val targetModules = kotlin.targets.filter { it.targetName != "jvm" && it.targetName != "metadata" }.map { target ->
