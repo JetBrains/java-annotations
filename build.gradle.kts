@@ -185,7 +185,7 @@ tasks {
 
     val javaOnlySourcesJar by creating(Jar::class) {
         from(kotlin.sourceSets["jvmMain"].kotlin) {
-            into(".")
+            into("")
         }
         archiveClassifier.set("sources")
     }
