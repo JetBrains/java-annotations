@@ -1,6 +1,10 @@
 Changelog
 ===
 
+Version 26.0.1
+---
+* Fixed sources.jar build (regression after 25.0.0)
+
 Version 26.0.0
 ---
 * Added new experimental annotation: `@NotNullByDefault`
