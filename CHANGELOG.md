@@ -1,6 +1,10 @@
 Changelog
 ===
 
+Version 26.0.2
+---
+* Fixed missing klibs for apple artifacts.
+
 Version 26.0.1
 ---
 * Fixed sources.jar build (regression after 25.0.0)
