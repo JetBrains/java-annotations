@@ -149,7 +149,7 @@ public final class ApiStatus {
   /**
    * <p>Indicates that the annotated method is part of SPI (Service Provider Interface), which is intended to be
    * <strong>only implemented or overridden</strong> but not called by clients of the declaring library.
-   * If a class or interface is marked with this annotation it means that all its methods can be only overridden.</p>
+   * If a class or interface is marked with this annotation it means that all its instance methods can be only overridden.</p>
    *
    * <p>Although there is a standard mechanism of {@code protected} methods, it is not applicable to interface's methods.
    * Also, API method may be made {@code public} to allow calls only from different parts of the declaring library but not outside it.</p>

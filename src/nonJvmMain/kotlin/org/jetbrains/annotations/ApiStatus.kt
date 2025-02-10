@@ -200,7 +200,7 @@ actual class ApiStatus private actual constructor() {
      *
      * Indicates that the annotated method is part of SPI (Service Provider Interface), which is intended to be
      * **only implemented or overridden** but not called by clients of the declaring library.
-     * If a class or interface is marked with this annotation it means that all its methods can be only overridden.
+     * If a class or interface is marked with this annotation it means that all its instance methods can be only overridden.
      *
      *
      * Although there is a standard mechanism of `protected` methods, it is not applicable to interface's methods.
