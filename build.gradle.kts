@@ -205,6 +205,11 @@ artifacts {
 }
 
 publishing {
+    repositories {
+        maven {
+            setUrl(layout.buildDirectory.dir("maven-central-artifacts"))
+        }
+    }
     val artifactBaseName = base.archivesName.get()
     configureMultiModuleMavenPublishing {
         val rootModule = module("rootModule") {
