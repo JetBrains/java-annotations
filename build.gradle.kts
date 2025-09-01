@@ -1,4 +1,3 @@
-import jetbrains.sign.GpgSignSignatoryProvider
 import org.gradle.jvm.tasks.Jar
 import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -20,33 +19,18 @@ import plugins.publishing.*
  * limitations under the License.
  */
 
-buildscript {
-    repositories {
-        maven { url = uri("https://packages.jetbrains.team/maven/p/jcs/maven") }
-    }
-    dependencies {
-        classpath("com.jetbrains:jet-sign:38")
-    }
-}
-
 repositories {
     mavenCentral()
 }
 
 plugins {
     kotlin("multiplatform") version "1.9.22"
-    id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
     `maven-publish`
-    signing
     java
 }
 
-var projectVersion = project.findProperty("projectVersion") as String
-val publishingUser: String? = System.getenv("PUBLISHING_USER")
-val publishingPassword: String? = System.getenv("PUBLISHING_PASSWORD")
-if (publishingPassword == null) {
-    projectVersion += "-SNAPSHOT"
-}
+val projectVersion = project.findProperty("projectVersion") as String
+
 println("##teamcity[setParameter name='java.annotations.version' value='$projectVersion']")
 
 // https://github.com/gradle/gradle/issues/847
@@ -200,15 +184,6 @@ tasks {
     }
 }
 
-nexusPublishing {
-    repositories {
-        sonatype {
-            username.set(publishingUser)
-            password.set(publishingPassword)
-        }
-    }
-}
-
 configurations {
     create("javaOnlySourcesElements") {
         copyAttributes(configurations.findByName("jvmSourcesElements")!!.attributes, attributes)
@@ -230,6 +205,11 @@ artifacts {
 }
 
 publishing {
+    repositories {
+        maven {
+            setUrl(layout.buildDirectory.dir("maven-central-artifacts"))
+        }
+    }
     val artifactBaseName = base.archivesName.get()
     configureMultiModuleMavenPublishing {
         val rootModule = module("rootModule") {
@@ -309,13 +289,4 @@ fun MavenPublication.configureKotlinPomAttributes(
             }
         }
     }
-}
-
-signing {
-    sign(publishing.publications)
-    signatories = GpgSignSignatoryProvider()
-}
-
-tasks.register("signAll") {
-    dependsOn(tasks.withType<Sign>())
 }
