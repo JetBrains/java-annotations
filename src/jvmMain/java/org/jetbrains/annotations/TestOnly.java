@@ -15,7 +15,11 @@
  */
 package org.jetbrains.annotations;
 
-import java.lang.annotation.*;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
  * A member or type annotated with TestOnly claims that it should be used from testing code only.
@@ -29,6 +33,7 @@ import java.lang.annotation.*;
  * proper API which can be used in production as well as in tests.
  */
 @Documented
-@Retention(RetentionPolicy.CLASS)
-@Target({ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.FIELD, ElementType.TYPE})
-public @interface TestOnly { }
+@Retention( RetentionPolicy.CLASS )
+@Target( { ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.FIELD, ElementType.TYPE, ElementType.PACKAGE } )
+public @interface TestOnly {
+}
