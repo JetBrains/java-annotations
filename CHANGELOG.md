@@ -1,6 +1,10 @@
 Changelog
 ===
 
+Version 26.0.2-1
+---
+* A technical release using the new Sonatype publication mechanism, see https://central.sonatype.org/publish/publish-portal-guide/ 
+
 Version 26.0.2
 ---
 * Fixed missing klibs for apple artifacts.
