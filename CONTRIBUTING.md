@@ -1,5 +1,5 @@
 ### How to contribute
-If you are not a JetBrains' employee you must sign [Contributor License Agreement](https://www.jetbrains.org/display/IJOS/Contributor+Agreement) first. 
+If you are not a JetBrains' employee you must sign [Contributor License Agreement](https://www.jetbrains.com/legal/docs/agreements/cla/) first. 
 You may do it [electronically](https://www.jetbrains.com/agreements/cla/). After that send your changes as a pull request or commit them directly to a branch.
 
 ### Versioning
