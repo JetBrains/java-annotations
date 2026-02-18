@@ -1,5 +1,8 @@
 Changelog
 ===
+Version 26.1.0
+---
+* `@NotNullByDefault` is not experimental anymore.
 
 Version 26.0.2-1
 ---
