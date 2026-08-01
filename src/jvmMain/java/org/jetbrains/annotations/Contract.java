@@ -100,7 +100,6 @@ public @interface Contract {
    *   <tr><td>"io,this"</td><td>Method performs input/output changing the outer world and mutates the receiver, but doesn't mutate any arguments or observable program state</td></tr>
    * </table>
    *
-   * <strong>Warning: This annotation parameter is experimental and may be changed or removed without further notice!</strong>
    * @return a mutation specifier string
    */
   @NonNls
