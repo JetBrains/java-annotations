@@ -36,6 +36,7 @@ package org.jetbrains.annotations
     AnnotationTarget.PROPERTY_SETTER,
     AnnotationTarget.CONSTRUCTOR,
     AnnotationTarget.FIELD,
-    AnnotationTarget.CLASS
+    AnnotationTarget.CLASS,
+    AnnotationTarget.FILE
 )
 actual annotation class TestOnly

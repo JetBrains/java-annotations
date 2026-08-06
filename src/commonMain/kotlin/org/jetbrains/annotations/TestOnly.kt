@@ -36,7 +36,8 @@ package org.jetbrains.annotations
     AnnotationTarget.PROPERTY_SETTER,
     AnnotationTarget.CONSTRUCTOR,
     AnnotationTarget.FIELD,
-    AnnotationTarget.CLASS
+    AnnotationTarget.CLASS,
+    AnnotationTarget.FILE
 )
 @kotlin.jvm.ImplicitlyActualizedByJvmDeclaration
 expect annotation class TestOnly()
